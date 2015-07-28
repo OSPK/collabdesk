@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/hilite.css') }}" />
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}" />
@@ -36,7 +37,7 @@
             {% if session.logged_in %}
               <li><a href="{{ url_for('create') }}">New</a></li>
               <li><a href="{{ url_for('drafts') }}">To do <span class="label label-danger">{{ draft_count() }}</span></a></li>
-              <li><a href="{{ url_for('done') }}">Done</a></li>
+              <li><a href="{{ url_for('done') }}">Done <span class="label label-success">{{ done_count() }}</span></a></li>
               <li><a href="{{ url_for('logout') }}">Log out</a></li>
             {% else %}
               <li><a href="{{ url_for('login') }}">Login</a></li>

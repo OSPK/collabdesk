@@ -176,7 +176,21 @@ def draft_count():
 	for x in query:
 		a += 1
 	return a
-application.jinja_env.globals.update(draft_count=draft_count)
+
+def done_count():
+	query = 0
+
+	if Entry.public() is not None:
+		query = Entry.public().order_by(Entry.timestamp.desc())
+	b = 0
+	for x in query:
+		b += 1
+	return b
+
+application.jinja_env.globals.update(draft_count=draft_count, done_count=done_count)
+
+
+
 
 @application.route('/login/', methods=['GET', 'POST'])
 def login():
