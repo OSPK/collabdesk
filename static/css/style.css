@@ -17,6 +17,12 @@ h3, .h3 {
 .black {
 	color: black;
 }
+::selection {
+  background: #F72C2C; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #F72C2C; /* Gecko Browsers */
+}
 .graphic-container {
 	position: relative;
 	text-align: center;
