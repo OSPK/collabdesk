@@ -20,6 +20,9 @@ import tweepy
 #DO pip install -r requirements.txt
 # pip list > requirements.txt
 
+# Create a Flask WSGI app and configure it using values from the module.
+app = Flask(__name__)
+app.config.from_object(__name__)
 
 # Blog configuration values.
 
@@ -40,11 +43,6 @@ SECRET_KEY = 'shhh, secret!'
 # This is used by micawber, which will attempt to generate rich media
 # embedded objects with maxwidth=800.
 SITE_WIDTH = 800
-
-
-# Create a Flask WSGI app and configure it using values from the module.
-app = Flask(__name__)
-app.config.from_object(__name__)
 
 # FlaskDB is a wrapper for a peewee database that sets up pre/post-request
 # hooks for managing database connections.
@@ -381,9 +379,10 @@ def clean_querystring(request_args, *keys_to_remove, **new_values):
 def not_found(exc):
 	return Response('<h3>Not found</h3>'), 404
 
-def main():
-	database.create_tables([Entry, FTSEntry], safe=True)
-	app.run(debug=True,host='0.0.0.0')
+#def main():
+#	database.create_tables([Entry, FTSEntry], safe=True)
+#	app.run(debug=True,host='0.0.0.0')
 
 if __name__ == '__main__':
-	main()
+	database.create_tables([Entry, FTSEntry], safe=True)
+	app.run(debug=True,host='0.0.0.0')
