@@ -1,10 +1,10 @@
 server {
     listen 80;
-    server_name telenornews.pk;
+    server_name 128.199.140.153;
 
     location / {
         include uwsgi_params;
-        uwsgi_pass unix:/home/waqas/collab/collabdesk.sock;
+        uwsgi_pass unix:/home/waqas/collab/collab.sock;
         uwsgi_read_timeout 800;
         proxy_redirect     off;
         proxy_set_header   Host $host;
