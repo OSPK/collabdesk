@@ -45,6 +45,7 @@ SITE_WIDTH = 800
 # Create a Flask WSGI app and configure it using values from the module.
 app = Flask(__name__)
 app.config.from_object(__name__)
+application = app
 
 # FlaskDB is a wrapper for a peewee database that sets up pre/post-request
 # hooks for managing database connections.
