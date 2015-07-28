@@ -277,7 +277,7 @@ def create():
 			if entry.published:
 				return redirect(url_for('detail', slug=entry.slug))
 			else:
-				return redirect(url_for('edit', slug=entry.slug))
+				return redirect(url_for('drafts'))
 		else:
 			flash('Title and Link are required.', 'danger')
 	return render_template('create.html')
