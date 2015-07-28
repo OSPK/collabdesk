@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Stories done{% endblock %}
+
+{% block content_title %}{% if search %}Search "{{ search }}"{% else %}Stories Done{% endif %}{% endblock %}
+
+{% block content %}
+  {% for entry in object_list %}
+    {% if search %}
+      {% set entry = entry.entry %}
+    {% endif %}
+    <h3>
+      <a href="{{ url_for('detail', slug=entry.slug) }}">{{ entry.title }}</a>
+      <a href="{{ url_for('edit', slug=entry.slug) }}"><button class="btn btn-lg">Edit</button></a>
+      <a class="graphic-link" href="/graphic/{{ entry.slug }}"><button class="btn btn-lg btn-warning">Graphic</button></a>
+    </h3>
+    <p>Created {{ entry.timestamp.strftime('%m/%d/%Y at %G:%I%p') }}</p>
+  {% else %}
+    <p>No entries have been created yet.</p>
+  {% endfor %}
+  {% include "includes/pagination.html" %}
+{% endblock %}

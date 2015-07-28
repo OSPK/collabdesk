@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Stories To Do{% endblock %}
+
+{% block content_title %}Stories to do <span class="label label-danger">{{ draft_count() }}</span> {% endblock %}
+
+{% block chat %}
+  <div class="col-md-4">
+    <iframe src="http://dpencollabdesk.chatovod.com/" style="border:0; width:100%; height:450px;"></iframe>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-8">
+  {% for entry in object_list %}
+    <article class="story">
+      {% if search %}
+        {% set entry = entry.entry %}
+      {% endif %}
+      <p>Created {{ entry.timestamp.strftime('%m/%d/%Y at %G:%I%p') }}</p>
+
+      <h6><span class="label label-primary">Source Link</span> <a href="{{ entry.link }}">{{ entry.link }}</a></h6>
+      <h3><span class="label label-default">Headline</span> {{ entry.title }}</h3>
+      <h3><span class="label label-default">Facebook Headline</span> {{ entry.fbtitle }}</h3>
+      <p><span class="label label-info">Notes</span> {{ entry.html_content }}</p>
+      <a class="graphic-link" href="/graphic/{{ entry.slug }}"><button class="btn btn-warning">Graphic</button></a>
+
+      <form action="{{ url_for('update', slug=entry.slug) }}" class="form-horizontal" method="post">
+        <span class="label label-default">Published status with link</span>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <input {% if entry.published %}checked="checked" {% endif %}name="published" type="checkbox" value="y">
+          </span>
+          <input class="form-control" id="publink" name="publink" type="text" value="{{ request.form.get('publink', entry.publink) }}">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">Update</button>
+          </span>
+        </div><!-- /input-group -->
+      </form>
+
+      <a class="edit-link" href="{{ url_for('edit', slug=entry.slug) }}"><button class="btn btn-xs">Edit</button></a>
+    </article>
+    {% else %}
+      <p>No entries have been created yet.</p>
+  {% endfor %}
+  {% include "includes/pagination.html" %}
+</div>
+{% endblock %}

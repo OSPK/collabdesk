@@ -1,0 +1,17 @@
+GET TOKEN
+https://graph.facebook.com/oauth/access_token?client_id=388666161164782&client_secret=f015f5b3f996f366e767015de3e2ef25&grant_type=client_credentials
+
+Here's a list of API links to get your stats:
+
+Facebook*: https://api.facebook.com/method/links.getStats?urls=%%URL%%&format=json
+Twitter: http://urls.api.twitter.com/1/urls/count.json?url=%%URL%%
+Reddit:http://buttons.reddit.com/button_info.json?url=%%URL%%
+LinkedIn: http://www.linkedin.com/countserv/count/share?url=%%URL%%&format=json 
+Digg: http://widgets.digg.com/buttons/count?url=%%URL%% 
+Delicious: http://feeds.delicious.com/v2/json/urlinfo/data?url=%%URL%%
+StumbleUpon: http://www.stumbleupon.com/services/1.01/badge.getinfo?url=%%URL%%
+Pinterest: http://widgets.pinterest.com/v1/urls/count.json?source=6&url=%%URL%%
+
+https://api.facebook.com/method/links.getStats?urls=http%3A%2F%2Fen.dailypakistan.com.pk%2Fviral%2Fviral-photos-show-inhuman-treatment-of-domestic-servants-in-pakistan-777%2F&format=json
+
+http://urls.api.twitter.com/1/urls/count.json?url=http://en.dailypakistan.com.pk/opinion/blog/karachi-and-the-judicial-commission-report/

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ entry.title }}{% endblock %}
+
+{% block content_title %}{{ entry.title }}{% endblock %}
+
+{% block extra_header %}
+  
+{% endblock %}
+
+{% block content %}
+  <p>Created {{ entry.timestamp.strftime('%m/%d/%Y at %G:%I%p') }}</p>
+  	<h6><span class="label label-primary">Source Link</span> <a href="{{ entry.link }}">{{ entry.link }}</a></h6>
+	<h3><span class="label label-default">Facebook Headline</span> {{ entry.fbtitle }}</h3>
+	<p><span class="label label-info">Notes</span> {{ entry.html_content }}</p>
+	<h3><span class="label label-primary">Published Link</span> <a href="{{ entry.publink }}">{{ entry.publink }}</a></h3>
+
+	{% for fbshares in fbshares %}
+	<h3><span class="label label-warning">Facebook Shares</span> {{fbshares.share_count}}</h3>
+	{% endfor %}
+
+	<h3><span class="label label-warning">Twitter Shares</span> {{twshares.count}}</h3>
+
+
+  <hr>
+  {% if session.logged_in %}
+    <a href="{{ url_for('edit', slug=entry.slug) }}"><button class="btn btn-lg btn-primary">Edit</button></a>
+  {% endif %}
+{% endblock %}

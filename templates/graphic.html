@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style type="text/css">
+	@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:700);
+	.graphic-container .headline {
+	font-family: Merriweather Sans,"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 700;
+	}
+</style>
+
+<h3><span class="label label-primary">Published Link</span> <a href="{{ entry.publink }}">{{ entry.publink }}</a></h3>
+<a class="edit-link" href="{{ url_for('edit', slug=entry.slug) }}"><button class="btn btn-lg">Edit</button></a>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#1" aria-controls="home" role="tab" data-toggle="tab">Simple</a></li>
+    <li role="presentation"><a href="#2" aria-controls="profile" role="tab" data-toggle="tab">Strong</a></li>
+    <li role="presentation"><a href="#3" aria-controls="messages" role="tab" data-toggle="tab">Left</a></li>
+    <li role="presentation"><a href="#4" aria-controls="settings" role="tab" data-toggle="tab">Right</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="1">
+		<div class="graphic-container">
+			<div class="style1">
+				<img class="storyimage" src="{{ entry.imgurl }}">
+				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
+				<p class="headline">{{ entry.fbtitle }}</p>
+				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
+			</div>
+		</div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="2">
+    	<div class="graphic-container">
+			<div class="style2">
+				<img class="storyimage" src="{{ entry.imgurl }}">
+				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
+				<div class="headline"><div class="hdinner">{{ entry.fbtitle }}</div></div>
+				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
+			</div>
+		</div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="3">
+    	<div class="graphic-container">
+			<div class="style3">
+				<img class="storyimage" src="{{ entry.imgurl }}">
+				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
+				<div class="headline"><div class="hdinner"><div>{{ entry.fbtitle }}</div></div></div>
+				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
+			</div>
+		</div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="4">
+    	<div class="graphic-container">
+			<div class="style4">
+				<img class="storyimage" src="{{ entry.imgurl }}">
+				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
+				<div class="headline"><div class="hdinner"><div>{{ entry.fbtitle }}</div></div></div>
+				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
+			</div>
+		</div>
+    </div>
+
+  </div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{% endblock %}

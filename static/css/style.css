@@ -1,0 +1,228 @@
+h3, .h3 {
+  line-height: 1.5em;
+}
+.story {
+	margin-bottom:20px;
+	padding:10px;
+	position: relative;
+}
+.story:nth-child(even) {
+	background-color: #e3e3e3;
+}
+.edit-link {
+	position:absolute;
+	right:5px;
+	top:5px;
+}
+.black {
+	color: black;
+}
+.graphic-container {
+	position: relative;
+	text-align: center;
+	border:2px solid black;
+}
+/**STYLE 1*******************************************************/
+.style1 .storyimage {
+	width:100%;
+	position: relative;
+	filter: brightness(65%);
+	-webkit-filter: brightness(65%);
+	-moz-filter: brightness(65%);
+	-o-filter: brightness(65%);
+	-ms-filter: brightness(65%);
+	z-index: 99;
+}
+.style1 .logo {
+  position: absolute;
+  z-index: 120;
+  right: 0px;
+  top: 0px;
+  width: 100px;
+}
+.style1 .info {
+  position: absolute;
+  z-index: 120;
+  width: 100%;
+  text-align: center;
+  bottom: 5px;
+  color: #FFF;
+  padding: 5px;
+  font-size: 15px;
+  background: rgba(0, 117, 62, 0.7);
+  margin: 0px;
+}
+.style1 .headline {
+  position: absolute;
+  font-size: 60px;
+  font-weight: bold;
+  color: #FFF;
+  text-shadow: 0px 0px 3px #000,0px 0px 19px #000, 0px 0px 9px #000,0px 0px 3px #000;
+  z-index: 100;
+  width: 100%;
+  bottom: 90px;
+  padding: 0px 50px;
+}
+/****************************************************************/
+/**STYLE 2*******************************************************/
+.style2 {
+  text-align: left;
+}
+.style2 .storyimage {
+	width:100%;
+	position: relative;
+	filter: brightness(25%);
+	-webkit-filter: brightness(25%);
+	-moz-filter: brightness(25%);
+	-o-filter: brightness(25%);
+	-ms-filter: brightness(25%);
+	z-index: 99;
+}
+.style2 .logo {
+  position: absolute;
+  z-index: 120;
+  right: 0px;
+  top: 0px;
+  width: 100px;
+}
+.style2 .info {
+  position: absolute;
+  z-index: 120;
+  width: 100%;
+  text-align: center;
+  bottom: 0px;
+  color: #FFF;
+  padding: 5px;
+  font-size: 15px;
+  background: rgba(0, 117, 62, 0.7);
+  margin: 0px;
+}
+.style2 .headline {
+  position: absolute;
+  display: inline-flex;
+  font-size: 85px;
+  font-weight: bold;
+  color: #FFF;
+  text-shadow: 0px 0px 3px #000,0px 0px 19px #000, 0px 0px 9px #000,0px 0px 3px #000;
+  z-index: 100;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  line-height: 100px;
+  padding: 0px 20px 0px 50px;
+  height: 100%;
+}
+.style2 .hdinner {
+  margin: auto;
+}
+/****************************************************************/
+/**STYLE 3*******************************************************/
+.style3 {
+	text-align: left;
+}
+.style3 .storyimage {
+	width:100%;
+	position: relative;
+	filter: brightness(85%);
+	-webkit-filter: brightness(85%);
+	-moz-filter: brightness(85%);
+	-o-filter: brightness(85%);
+	-ms-filter: brightness(85%);
+	z-index: 99;
+}
+.style3 .logo {
+  position: absolute;
+  z-index: 120;
+  right: 0px;
+  top: 0px;
+  width: 100px;
+}
+.style3 .info {
+  position: absolute;
+  z-index: 120;
+  width: 100%;
+  text-align: center;
+  bottom: 0px;
+  color: #FFF;
+  padding: 5px;
+  font-size: 15px;
+  background: rgba(0, 117, 62, 1);
+  margin: 0px;
+}
+.style3 .headline {
+  position: absolute;
+  display: inline-flex;
+  font-size: 35px;
+  font-weight: bold;
+  color: #FFF;
+  text-shadow: 0px 0px 3px #000,0px 0px 19px #000, 0px 0px 9px #000,0px 0px 3px #000;
+  z-index: 100;
+  width: 50%;
+  left: 0px;
+  top: 0px;
+  line-height: 50px;
+  padding: 20px 30px 20px 30px;
+  background: rgba(0, 0, 0, 0.85);
+  margin: 0px;
+  border-radius: 8px 0px 0px 0px;
+  height: 100%;
+}
+.style3 .hdinner {
+  margin: auto 0px;
+}
+/****************************************************************/
+/**STYLE 3*******************************************************/
+.style4 {
+	text-align: left;
+}
+.style4 .storyimage {
+	width:100%;
+	position: relative;
+	filter: brightness(85%);
+	-webkit-filter: brightness(85%);
+	-moz-filter: brightness(85%);
+	-o-filter: brightness(85%);
+	-ms-filter: brightness(85%);
+	z-index: 99;
+}
+.style4 .logo {
+  position: absolute;
+  z-index: 120;
+  left: 0px;
+  top: 0px;
+  width: 100px;
+}
+.style4 .info {
+  position: absolute;
+  z-index: 120;
+  width: 100%;
+  text-align: center;
+  bottom: 0px;
+  color: #FFF;
+  padding: 5px;
+  font-size: 15px;
+  background: rgba(0, 117, 62, 1);
+  margin: 0px;
+}
+.style4 .headline {
+  position: absolute;
+  display: inline-flex;
+  font-size: 35px;
+  font-weight: bold;
+  color: #FFF;
+  text-shadow: 0px 0px 3px #000,0px 0px 19px #000, 0px 0px 9px #000,0px 0px 3px #000;
+  z-index: 100;
+  width: 50%;
+  right: 0px;
+  top: 0px;
+  line-height: 50px;
+  padding: 20px 30px 20px 30px;
+  background: rgba(0, 0, 0, 0.85);
+  margin: 0px;
+  border-radius: 8px 0px 0px 0px;
+  height: 100%;
+}
+.style4 .hdinner {
+  margin: auto 0px;
+}
+/****************************************************************/

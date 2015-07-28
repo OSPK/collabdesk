@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Twitter Trends{% endblock %}
+
+{% block content_title %}<a href="{{ url_for('index') }}"><button class="btn btn-lg btn-primary">Home</button></a> | Twitter Trends{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-4">
+    <h2>Karachi</h2>
+    {% for item in karachi.trends %}
+      <a href="{{item.url}}">{{item.name}}</a><br>
+    {% endfor %}
+  </div>
+  <div class="col-md-4">
+    <h2>Lahore</h2>
+    {% for item in lahore.trends %}
+      <a href="{{item.url}}">{{item.name}}</a><br>
+    {% endfor %}
+  </div>
+  <div class="col-md-4">
+    <h2>Pakistan</h2>
+    {% for item in pakistan.trends %}
+      <a href="{{item.url}}">{{item.name}}</a><br>
+    {% endfor %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <h2>India</h2>
+    {% for item in india.trends %}
+      <a href="{{item.url}}">{{item.name}}</a><br>
+    {% endfor %}
+  </div>
+  <div class="col-md-4">
+    <h2>United States</h2>
+    {% for item in unitedstates.trends %}
+      <a href="{{item.url}}">{{item.name}}</a><br>
+    {% endfor %}
+  </div>
+  <div class="col-md-4">
+    <h2>World</h2>
+    {% for item in world.trends %}
+      <a href="{{item.url}}">{{item.name}}</a><br>
+    {% endfor %}
+  </div>
+</div>
+&nbsp;&nbsp;
+{% endblock %}
