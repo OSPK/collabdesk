@@ -66,7 +66,7 @@ auth.set_access_token('3024265320-QPKgtETV2ge9jpWABDmciE9KtYu48pcJeLZM2XU', 'HMI
 
 api = tweepy.API(auth)
 
-cache = Cache(app,config={'CACHE_TYPE': 'simple'})
+cache = Cache(application,config={'CACHE_TYPE': 'simple'})
 
 
 class Entry(flask_db.Model):
