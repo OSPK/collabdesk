@@ -34,6 +34,8 @@
               <li><a href="{{ url_for('drafts') }}">To do <span class="label label-danger">{{ draft_count() }}</span></a></li>
               <li><a href="{{ url_for('done') }}">Done</a></li>
               <li><a href="{{ url_for('logout') }}">Log out</a></li>
+            {% else %}
+              <li><a href="{{ url_for('login') }}">Login</a></li>
             {% endif %}
             {% block extra_header %}{% endblock %}
           </ul>

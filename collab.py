@@ -202,6 +202,7 @@ def logout():
 	return render_template('logout.html')
 
 @application.route('/')
+@login_required
 def index():
 	test="hi"
 	# The `object_list` helper will take a base query and then handle
