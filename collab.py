@@ -314,7 +314,7 @@ def detail(slug):
 def edit(slug):
 	entry = get_object_or_404(Entry, Entry.slug == slug)
 	if request.method == 'POST':
-		if request.form.get('title') and request.form.get('content'):
+		if request.form.get('title') and request.form.get('link'):
 			entry.title = request.form['title']
 			entry.fbtitle = request.form['fbtitle']
 			entry.link = request.form['link']
@@ -332,7 +332,7 @@ def edit(slug):
 				#return redirect(url_for('edit', slug=entry.slug))
 				return redirect(url_for('drafts'))
 		else:
-			flash('Title and Content are required.', 'danger')
+			flash('Title and Link are required.', 'danger')
 
 	return render_template('edit.html', entry=entry)
 
