@@ -1,4 +1,4 @@
-from collab import application
+from collab import app
 
 if __name__ == "__main__":
     application.run()
