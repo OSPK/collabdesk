@@ -49,7 +49,7 @@ application.config.from_object(__name__)
 
 # FlaskDB is a wrapper for a peewee database that sets up pre/post-request
 # hooks for managing database connections.
-flask_db = FlaskDB(app)
+flask_db = FlaskDB(application)
 
 # The `database` is the actual peewee database, as opposed to flask_db which is
 # the wrapper.
