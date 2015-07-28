@@ -9,7 +9,7 @@
 	}
 </style>
 
-<h3><span class="label label-primary">Published Link</span> <a href="{{ entry.publink }}">{{ entry.publink }}</a><br><a class="edit-link" href="{{ url_for('edit', slug=entry.slug) }}"><button class="btn btn-lg">Edit</button></a></h3>
+<h3><span class="label label-primary">Published Link</span> <a href="{{ entry.publink }}">{{ entry.publink }}</a></h3><a href="{{ url_for('edit', slug=entry.slug) }}"><button class="btn btn-lg">Edit</button></a>
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
