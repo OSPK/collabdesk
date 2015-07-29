@@ -70,7 +70,7 @@
 				<div class="inner">
 					<img class="storyimage" src="{{ url_for('static', filename='images/'+entry.slug+'.png') }}?{{ bust }}">
 					<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
-					<div class="headline"><div class="hdinner">{{ entry.fbtitle }}</div></div>
+					<div class="headline"><div class="hdinner">{{ entry.fbtitle|safe }}</div></div>
 					<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
 				</div>
 			</div>
@@ -84,7 +84,7 @@
 				<div class="inner">
 					<img class="storyimage" src="{{ url_for('static', filename='images/'+entry.slug+'.png') }}?{{ bust }}">
 					<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
-					<div class="headline"><div class="hdinner">{{ entry.fbtitle }}</div></div>
+					<div class="headline"><div class="hdinner">{{ entry.fbtitle|safe }}</div></div>
 					<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
 				</div>
 			</div>
@@ -97,7 +97,7 @@
 			<div id="style3" class="graphic style3">
 				<img class="storyimage" src="{{ url_for('static', filename='images/'+entry.slug+'.png') }}?{{ bust }}">
 				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
-				<div class="headline inner"><div class="hdinner"><div>{{ entry.fbtitle }}</div></div></div>
+				<div class="headline inner"><div class="hdinner"><div>{{ entry.fbtitle|safe }}</div></div></div>
 				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
 			</div>
 		</div>
@@ -109,7 +109,7 @@
 			<div id="style4" class="graphic style4">
 				<img class="storyimage" src="{{ url_for('static', filename='images/'+entry.slug+'.png') }}?{{ bust }}">
 				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
-				<div class="headline inner"><div class="hdinner"><div>{{ entry.fbtitle }}</div></div></div>
+				<div class="headline inner"><div class="hdinner"><div>{{ entry.fbtitle|safe }}</div></div></div>
 				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
 			</div>
 		</div>

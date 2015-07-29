@@ -32,6 +32,21 @@ h3, .h3 {
 .graphic .storyimage {
   z-index: -10;
 }
+span.highlight {
+  padding: 3px 10px;
+}
+.red {
+  background-color: rgba(236, 34, 34, 0.8);
+}
+.yellow {
+  background-color: rgba(236, 210, 34, 0.8);
+}
+.blue {
+  background-color: rgba(34, 159, 236, 0.8);
+}
+.graphic em {
+  border-bottom: 5px solid rgba(236, 34, 34, 0.8);
+}
 /**STYLE 1*******************************************************/
 .style1 .storyimage {
 	width:100%;
