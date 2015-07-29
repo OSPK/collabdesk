@@ -396,6 +396,27 @@ def graphic(slug):
 
 	return render_template('graphic.html', entry=entry)
 
+@application.route('/graphic/<slug>/update')
+@login_required
+def graphic_update(slug):
+	if session.get('logged_in'):
+		query = Entry.select()
+	else:
+		query = Entry.public()
+	entry = get_object_or_404(query, Entry.slug == slug)
+
+	filename = entry.slug
+	savefile = 'static/images/'+filename+'.png'
+
+	imgfile = requests.get(entry.imgurl)
+
+	if os.path.isfile(savefile):
+		with open(savefile, 'wb') as f:
+			f.write(imgfile.content)
+	
+
+	return render_template('graphic.html', entry=entry)
+
 @application.template_filter('clean_querystring')
 def clean_querystring(request_args, *keys_to_remove, **new_values):
 	# We'll use this template filter in the pagination include. This filter
