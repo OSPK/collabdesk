@@ -33,20 +33,21 @@ h3, .h3 {
   z-index: -10;
 }
 .graphic span.highlight {
-  padding: 3px 10px;
+  
 }
-.graphic .red {
+.graphic span.red {
+  padding: 3px 10px;
   background-color: rgba(236, 34, 34, 0.8);
 }
-.graphic .yellow {
+.graphic span.yellow {
+  padding: 3px 10px;
   background-color: rgba(236, 210, 34, 0.8);
 }
-.graphic .blue {
+.graphic span.blue {
+  padding: 3px 10px;
   background-color: rgba(34, 159, 236, 0.8);
 }
-.graphic em {
-  border-bottom: 5px solid rgba(236, 34, 34, 0.8);
-}
+
 /**STYLE 1*******************************************************/
 .style1 .storyimage {
 	width:100%;
