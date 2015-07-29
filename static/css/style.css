@@ -30,18 +30,12 @@ h3, .h3 {
   overflow: hidden;
 }
 .graphic .storyimage {
-
+  z-index: -10;
 }
 /**STYLE 1*******************************************************/
 .style1 .storyimage {
 	width:100%;
 	position: relative;
-	filter: brightness(65%);
-	-webkit-filter: brightness(65%);
-	-moz-filter: brightness(65%);
-	-o-filter: brightness(65%);
-	-ms-filter: brightness(65%);
-	z-index: 99;
 }
 .style1 .logo {
   position: absolute;
@@ -83,12 +77,6 @@ h3, .h3 {
 .style2 .storyimage {
 	width:100%;
 	position: relative;
-	filter: brightness(25%);
-	-webkit-filter: brightness(25%);
-	-moz-filter: brightness(25%);
-	-o-filter: brightness(25%);
-	-ms-filter: brightness(25%);
-	z-index: 99;
 }
 .style2 .logo {
   position: absolute;
@@ -135,12 +123,6 @@ h3, .h3 {
 .style3 .storyimage {
 	width:100%;
 	position: relative;
-	filter: brightness(85%);
-	-webkit-filter: brightness(85%);
-	-moz-filter: brightness(85%);
-	-o-filter: brightness(85%);
-	-ms-filter: brightness(85%);
-	z-index: 99;
 }
 .style3 .logo {
   position: absolute;
@@ -191,12 +173,6 @@ h3, .h3 {
 .style4 .storyimage {
 	width:100%;
 	position: relative;
-	filter: brightness(85%);
-	-webkit-filter: brightness(85%);
-	-moz-filter: brightness(85%);
-	-o-filter: brightness(85%);
-	-ms-filter: brightness(85%);
-	z-index: 99;
 }
 .style4 .logo {
   position: absolute;
