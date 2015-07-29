@@ -27,6 +27,10 @@ h3, .h3 {
 	position: relative;
 	text-align: center;
 	border:2px solid black;
+  overflow: hidden;
+}
+.graphic .storyimage {
+  visibility: hidden;
 }
 /**STYLE 1*******************************************************/
 .style1 .storyimage {
@@ -57,17 +61,19 @@ h3, .h3 {
   font-size: 15px;
   background: rgba(0, 117, 62, 0.7);
   margin: 0px;
+  z-index: 121;
 }
 .style1 .headline {
   position: absolute;
   font-size: 60px;
   font-weight: bold;
   color: #FFF;
-  text-shadow: 0px 0px 3px #000,0px 0px 19px #000, 0px 0px 9px #000,0px 0px 3px #000;
+  text-shadow: 2px 3px 7px #000;
   z-index: 100;
   width: 100%;
   bottom: 90px;
   padding: 0px 50px;
+  z-index: 121;
 }
 /****************************************************************/
 /**STYLE 2*******************************************************/
@@ -109,7 +115,7 @@ h3, .h3 {
   font-size: 75px;
   font-weight: bold;
   color: #FFF;
-  text-shadow: 0px 0px 3px #000,0px 0px 19px #000, 0px 0px 9px #000,0px 0px 3px #000;
+  text-shadow: 3px 5px 7px #000;
   z-index: 100;
   width: 100%;
   top: 0px;
@@ -161,25 +167,26 @@ h3, .h3 {
   font-size: 45px;
   font-weight: bold;
   color: #FFF;
-  text-shadow: 0px 0px 3px #000,0px 0px 19px #000, 0px 0px 9px #000,0px 0px 3px #000;
+  text-shadow: 0px 0px 9px #000;
   z-index: 100;
   width: 50%;
   left: 0px;
   top: 0px;
   line-height: 70px;
-  padding: 20px 30px 20px 30px;
   background: rgba(0, 0, 0, 0.85);
   margin: 0px;
+  padding:0px;
   border-radius: 8px 0px 0px 0px;
   height: 100%;
 }
 .style3 .hdinner {
   margin: auto 0px;
+  padding: 20px 30px 20px 30px;
 }
 /****************************************************************/
 /**STYLE 3*******************************************************/
 .style4 {
-	text-align: left;
+	text-align: right;
 }
 .style4 .storyimage {
 	width:100%;
@@ -216,13 +223,13 @@ h3, .h3 {
   font-size: 45px;
   font-weight: bold;
   color: #FFF;
-  text-shadow: 0px 0px 3px #000,0px 0px 19px #000, 0px 0px 9px #000,0px 0px 3px #000;
+  text-shadow: 0px 0px 9px #000;
   z-index: 100;
   width: 50%;
   right: 0px;
   top: 0px;
   line-height: 70px;
-  padding: 20px 30px 20px 30px;
+  padding: 0px;
   background: rgba(0, 0, 0, 0.85);
   margin: 0px;
   border-radius: 8px 0px 0px 0px;
@@ -230,5 +237,6 @@ h3, .h3 {
 }
 .style4 .hdinner {
   margin: auto 0px;
+  padding: 20px 30px 20px 30px;
 }
 /****************************************************************/

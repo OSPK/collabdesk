@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block extra_scripts %}
+		<script src="{{ url_for('static', filename='jquerymobile/jquery.mobile.custom.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/html2canvas.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/canvas2image.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/spectrum.js') }}"></script>
+{% endblock %}
+{% block extra_head %}
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='jquerymobile/jquery.mobile-1.4.5.min.css') }}" />
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='jquerymobile/jquery.mobile.custom.structure.min.css') }}" />
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='jquerymobile/jquery.mobile.custom.theme.min.css') }}" />
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/spectrum.css') }}" />
+{% endblock %}
 
+{% block content %}
 <style type="text/css">
 	@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:700);
 	.graphic-container .headline {
@@ -10,70 +22,172 @@
 	font-size: {{'{{fontsize}}px'}};
 	line-height: {{'{{lineheight}}px'}};
 	}
-</style>
+	.graphic {
+		background-image: url('{{ url_for('static', filename='images/'+entry.slug+'.png') }}');
+	}
+	.inner {
+		width:100%;
+		height:100%;
+		background-color: rgba(0,0,0,0.6);
+		background-color: {{'{{color}}'}}!important;
+	}
+	.headline {
+		top:{{'{{height}}%'}};
+	}
+	.graphic .hdinner {
+		margin-top:{{'{{height}}%'}};
+	}
+</style><!--sdsad -->
 
-
-<h3><span class="label label-primary">Published Link</span> <a href="{{ entry.publink }}">{{ entry.publink }}</a></h3><a href="{{ url_for('edit', slug=entry.slug) }}"><button class="btn btn-lg">Edit</button></a>
+	<h3>
+		<span class="label label-primary">Published Link</span> <a href="{{ entry.publink }}">{{ entry.publink }}</a>
+	</h3>
+	<a class="pull-right" href="{{ url_for('edit', slug=entry.slug) }}">
+		<button class="btn btn-lg">Edit</button>
+	</a>
 
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#1" aria-controls="home" role="tab" data-toggle="tab">Simple</a></li>
-    <li role="presentation"><a href="#2" aria-controls="profile" role="tab" data-toggle="tab">Strong</a></li>
-    <li role="presentation"><a href="#3" aria-controls="messages" role="tab" data-toggle="tab">Left</a></li>
-    <li role="presentation"><a href="#4" aria-controls="settings" role="tab" data-toggle="tab">Right</a></li>
-  </ul>
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#1" aria-controls="style1" role="tab" data-toggle="tab">Simple</a></li>
+		<li role="presentation"><a href="#2" aria-controls="style2" role="tab" data-toggle="tab">Strong</a></li>
+		<li role="presentation"><a href="#3" aria-controls="style3" role="tab" data-toggle="tab">Left</a></li>
+		<li role="presentation"><a href="#4" aria-controls="style4" role="tab" data-toggle="tab">Right</a></li>
+	</ul>
+
+	<label for="height" class="label label-primary">Text-Height</label> {{ '{{height}}' }}<br />
+	<input type="range" ng-model="height" name="height" id="height" value="" min="0" max="100" step="0.1">
+
+	<span class="label label-primary">Background Color</span>
+	<input type="text" class="color" ng-model="color" name="color" id="color">
+	<em id='basic-log'></em>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="1">
+	<div role="tabpanel" class="tab-pane active" id="1">
 		<div class="graphic-container">
-			<div class="style1">
+			<div id="style1" class="graphic style1">
+				<div class="inner">
+					<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
+					<p class="headline">{{ entry.fbtitle }}</p>
+					<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
+					<img class="storyimage" src="{{ url_for('static', filename='images/'+entry.slug+'.png') }}">
+				</div>
+			</div>
+		</div>
+		<button id="btnSave1" class="btn btn-warning btn-lg btn-block">Download This Image</button>
+	</div>
+
+	<div role="tabpanel" class="tab-pane" id="2">
+		<div class="graphic-container">
+			<div id="style2" class="graphic style2">
+				<div class="inner">
+					<img class="storyimage" src="{{ entry.imgurl }}">
+					<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
+					<div class="headline"><div class="hdinner">{{ entry.fbtitle }}</div></div>
+					<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
+				</div>
+			</div>
+		</div>
+		<button id="btnSave2" class="btn btn-warning btn-lg btn-block">Download This Image</button>
+	</div>
+
+	<div role="tabpanel" class="tab-pane" id="3">
+		<div class="graphic-container">
+			<div id="style3" class="graphic style3">
 				<img class="storyimage" src="{{ entry.imgurl }}">
 				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
-				<p class="headline">{{ entry.fbtitle }}</p>
+				<div class="headline inner"><div class="hdinner"><div>{{ entry.fbtitle }}</div></div></div>
 				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
 			</div>
 		</div>
-    </div>
+		<button id="btnSave3" class="btn btn-warning btn-lg btn-block">Download This Image</button>
+	</div>
 
-    <div role="tabpanel" class="tab-pane" id="2">
-    	<div class="graphic-container">
-			<div class="style2">
+	<div role="tabpanel" class="tab-pane" id="4">
+		<div class="graphic-container">
+			<div id="style4" class="graphic style4">
 				<img class="storyimage" src="{{ entry.imgurl }}">
 				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
-				<div class="headline"><div class="hdinner">{{ entry.fbtitle }}</div></div>
+				<div class="headline inner"><div class="hdinner"><div>{{ entry.fbtitle }}</div></div></div>
 				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
 			</div>
 		</div>
-    </div>
-
-    <div role="tabpanel" class="tab-pane" id="3">
-    	<div class="graphic-container">
-			<div class="style3">
-				<img class="storyimage" src="{{ entry.imgurl }}">
-				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
-				<div class="headline"><div class="hdinner"><div>{{ entry.fbtitle }}</div></div></div>
-				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
-			</div>
-		</div>
-    </div>
-
-    <div role="tabpanel" class="tab-pane" id="4">
-    	<div class="graphic-container">
-			<div class="style4">
-				<img class="storyimage" src="{{ entry.imgurl }}">
-				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
-				<div class="headline"><div class="hdinner"><div>{{ entry.fbtitle }}</div></div></div>
-				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
-			</div>
-		</div>
-    </div>
-
+		<button id="btnSave4" class="btn btn-warning btn-lg btn-block">Download This Image</button>
+	</div>
   </div>
+
 <label for="fontsize" class="label label-primary">Font Size</label> {{ '{{fontsize}}' }}<br />
-<input type="range" ng-model="fontsize" name="fontsize" id="fontsize" value="50" min="0" max="100"><br>
+<input type="range" ng-model="fontsize" name="fontsize" id="fontsize" value="50" min="0" max="100">
 <label for="lineheight" class="label label-primary">Line Height</label> {{ '{{lineheight}}' }}<br />
 <input type="range" ng-model="lineheight" name="lineheight" id="lineheight" value="50" min="0" max="150">
+
+<script type="text/javascript">
+$(function() { 
+	$("#btnSave1").click(function() { 
+		html2canvas($("#style1"), {
+			onrendered: function(canvas) {
+				theCanvas = canvas;
+				document.body.appendChild(canvas);
+				// Convert and download as image 
+				Canvas2Image.saveAsPNG(canvas); 
+				//$("#none").append(canvas);
+				// Clean up 
+				//document.body.removeChild(canvas);
+			}
+		});
+	});
+	$("#btnSave2").click(function() { 
+		html2canvas($("#style2"), {
+			onrendered: function(canvas) {
+				theCanvas = canvas;
+				document.body.appendChild(canvas);
+				// Convert and download as image 
+				Canvas2Image.saveAsPNG(canvas); 
+				//$("#none").append(canvas);
+				// Clean up 
+				//document.body.removeChild(canvas);
+			}
+		});
+	});
+	$("#btnSave3").click(function() { 
+		html2canvas($("#style3"), {
+			onrendered: function(canvas) {
+				theCanvas = canvas;
+				document.body.appendChild(canvas);
+				// Convert and download as image 
+				Canvas2Image.saveAsPNG(canvas); 
+				//$("#none").append(canvas);
+				// Clean up 
+				//document.body.removeChild(canvas);
+			}
+		});
+	});
+	$("#btnSave4").click(function() { 
+		html2canvas($("#style4"), {
+			onrendered: function(canvas) {
+				theCanvas = canvas;
+				document.body.appendChild(canvas);
+				// Convert and download as image 
+				Canvas2Image.saveAsPNG(canvas); 
+				//$("#none").append(canvas);
+				// Clean up 
+				//document.body.removeChild(canvas);
+			}
+		});
+	});
+});
+
+//Color picker
+$(".color").spectrum({
+	color: "#f00",
+	showAlpha: true,
+	showInput: true,
+	preferredFormat: "rgb",
+	change: function(color) {
+	$("#basic-log").text(color);
+	}
+});
+</script>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 {% endblock %}

@@ -1,8 +1,10 @@
 import datetime
 import functools
 import os
+import os.path
 import re
 import urllib, json
+import requests
 
 from flask import (Flask, flash, Markup, redirect, render_template, request,
 				   Response, session, url_for, jsonify)
@@ -66,7 +68,11 @@ auth.set_access_token('3024265320-QPKgtETV2ge9jpWABDmciE9KtYu48pcJeLZM2XU', 'HMI
 
 api = tweepy.API(auth)
 
+#Simple Cache
 cache = Cache(application,config={'CACHE_TYPE': 'simple'})
+
+#Uploads Folder
+application.config['UPLOAD_FOLDER'] = 'uploads/'
 
 
 class Entry(flask_db.Model):
@@ -377,6 +383,16 @@ def graphic(slug):
 	else:
 		query = Entry.public()
 	entry = get_object_or_404(query, Entry.slug == slug)
+
+	filename = entry.slug
+	savefile = 'static/images/'+filename+'.png'
+
+	imgfile = requests.get(entry.imgurl)
+
+	if not os.path.isfile(savefile):
+		with open(savefile, 'wb') as f:
+			f.write(imgfile.content)
+	
 
 	return render_template('graphic.html', entry=entry)
 

@@ -1,3 +1,4 @@
 env/
+static/images/
 *.pyc
 blog.db
