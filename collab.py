@@ -5,6 +5,7 @@ import os.path
 import re
 import urllib, json
 import requests
+import random
 
 from flask import (Flask, flash, Markup, redirect, render_template, request,
 				   Response, session, url_for, jsonify)
@@ -384,6 +385,8 @@ def graphic(slug):
 		query = Entry.public()
 	entry = get_object_or_404(query, Entry.slug == slug)
 
+	bust = random.random()
+
 	filename = entry.slug
 	savefile = 'static/images/'+filename+'.png'
 
@@ -394,7 +397,7 @@ def graphic(slug):
 			f.write(imgfile.content)
 	
 
-	return render_template('graphic.html', entry=entry)
+	return render_template('graphic.html', entry=entry, bust=bust)
 
 @application.route('/graphic/<slug>/update')
 @login_required
@@ -410,12 +413,10 @@ def graphic_update(slug):
 
 	imgfile = requests.get(entry.imgurl)
 
-	if os.path.isfile(savefile):
-		with open(savefile, 'wb') as f:
-			f.write(imgfile.content)
-	
+	with open(savefile, 'wb') as f:
+		f.write(imgfile.content)
 
-	return render_template('graphic.html', entry=entry)
+	return redirect(url_for('graphic', slug=entry.slug))
 
 @application.template_filter('clean_querystring')
 def clean_querystring(request_args, *keys_to_remove, **new_values):

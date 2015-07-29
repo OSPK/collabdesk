@@ -10,6 +10,7 @@
 
 {% block content %}
   <p>Created {{ entry.timestamp.strftime('%m/%d/%Y at %G:%I%p') }}</p>
+  	<a class="graphic-link pull-right" href="/graphic/{{ entry.slug }}"><button class="btn btn-lg btn-warning">Graphic</button></a>
   	<h6><span class="label label-primary">Source Link</span> <a href="{{ entry.link }}">{{ entry.link }}</a></h6>
 	<h3><span class="label label-default">Facebook Headline</span> {{ entry.fbtitle }}</h3>
 	<p><span class="label label-info">Notes</span> {{ entry.html_content }}</p>
