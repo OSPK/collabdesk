@@ -24,6 +24,7 @@
 	}
 	.graphic {
 		background-image: url('{{ url_for('static', filename='images/'+entry.slug+'.png') }}');
+		background-position: 0px 0px;
 	}
 	.inner {
 		width:100%;
@@ -67,10 +68,10 @@
 		<div class="graphic-container">
 			<div id="style1" class="graphic style1">
 				<div class="inner">
+					<img class="storyimage" src="{{ entry.imgurl }}">
 					<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
-					<p class="headline">{{ entry.fbtitle }}</p>
+					<div class="headline"><div class="hdinner">{{ entry.fbtitle }}</div></div>
 					<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
-					<img class="storyimage" src="{{ url_for('static', filename='images/'+entry.slug+'.png') }}">
 				</div>
 			</div>
 		</div>
