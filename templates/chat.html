@@ -12,7 +12,7 @@
 	<div id="out"></div>
 	<div class="old">
 	{% for msg in msgs %}
-		<span>{{msg.usr}}</span>: {{ msg.msg }}<br>
+		<p class="chatmsg"><strong>{{msg.usr}}:</strong> {{ msg.msg }}</p>
 	{% endfor %}
 	</div>
 	<script>

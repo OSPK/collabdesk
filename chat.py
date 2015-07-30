@@ -71,7 +71,7 @@ def post():
 	db.session.add(masg)
 	db.session.commit()
 	#red.publish('chat', u'[%s] %s: %s' % (now.isoformat(), user, message))
-	red.publish('chat', u'%s: %s' % (user, message))
+	red.publish('chat', u'<p><strong>%s:</strong> %s </p>' % (user, message))
 
 	return flask.Response(status=204)
 
