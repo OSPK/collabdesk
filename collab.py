@@ -206,7 +206,7 @@ def login():
 		# password and do the comparison on the hashed versions.
 		if password == application.config['ADMIN_PASSWORD']:
 			session['logged_in'] = True
-			#flask.session['user'] = user
+			session['user'] = user
 			session.permanent = True  # Use cookie to store session.
 			flash('You are now logged in.', 'success')
 			return redirect(next_url or url_for('index'))
