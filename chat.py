@@ -13,7 +13,7 @@ app.secret_key = 'asdf'
 red = redis.StrictRedis()
 
 
-#Start: gunicorn --worker-class=gevent -t 99999 chat:app
+#Start: gunicorn -b 0.0.0.0:8080 --worker-class=gevent -t 99999 chat:app
 
 APP_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -94,4 +94,4 @@ def home():
 
 if __name__ == '__main__':
 	app.debug = True
-	app.run(host='0.0.0.0')
+	app.run()
