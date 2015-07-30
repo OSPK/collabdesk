@@ -390,9 +390,8 @@ def graphic(slug):
 	filename = entry.slug
 	savefile = 'static/images/'+filename+'.png'
 
-	imgfile = requests.get(entry.imgurl)
-
 	if not os.path.isfile(savefile):
+		imgfile = requests.get(entry.imgurl)
 		with open(savefile, 'wb') as f:
 			f.write(imgfile.content)
 	

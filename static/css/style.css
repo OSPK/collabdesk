@@ -53,13 +53,7 @@ h3, .h3 {
 	width:100%;
 	position: relative;
 }
-.style1 .logo {
-  position: absolute;
-  z-index: 120;
-  right: 0px;
-  top: 0px;
-  width: 100px;
-}
+
 .style1 .info {
   position: absolute;
   z-index: 120;
@@ -94,13 +88,7 @@ h3, .h3 {
 	width:100%;
 	position: relative;
 }
-.style2 .logo {
-  position: absolute;
-  z-index: 120;
-  right: 0px;
-  top: 0px;
-  width: 100px;
-}
+
 .style2 .info {
   position: absolute;
   z-index: 120;
@@ -140,13 +128,7 @@ h3, .h3 {
 	width:100%;
 	position: relative;
 }
-.style3 .logo {
-  position: absolute;
-  z-index: 120;
-  right: 0px;
-  top: 0px;
-  width: 100px;
-}
+
 .style3 .info {
   position: absolute;
   z-index: 120;
@@ -190,13 +172,7 @@ h3, .h3 {
 	width:100%;
 	position: relative;
 }
-.style4 .logo {
-  position: absolute;
-  z-index: 120;
-  left: 0px;
-  top: 0px;
-  width: 100px;
-}
+
 .style4 .info {
   position: absolute;
   z-index: 120;

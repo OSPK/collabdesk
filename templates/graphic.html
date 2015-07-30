@@ -38,6 +38,12 @@
 	.graphic .hdinner {
 		margin-top:{{'{{height}}%'}};
 	}
+	.style1 .logo {
+	  position: absolute;
+	  z-index: 120;
+	  width: 100px;
+	  {{'{{logopos}}'}}
+	}
 </style><!--sdsad -->
 
 	<h3>
@@ -59,8 +65,12 @@
 	<input type="range" ng-model="height" name="height" id="height" value="" min="0" max="100" step="0.1">
 
 	<span class="label label-primary">Background Color</span>
-	<input type="text" class="color" ng-model="color" name="color" id="color">
-	<em id='basic-log'></em>
+	<input type="text" class="color" ng-model="color" name="color" id="color"><em id='basic-log'></em>
+	<select ng-model="logopos" class="pull-right" name="logopos" form="logopos">
+		<option value="" selected>Logo Position</option>
+		<option value="left:0px;top:0px;">Left Top</option>
+		<option value="right:0px;top:0px;">Right Top</option>
+	</select>
 
   <!-- Tab panes -->
   <div class="tab-content">
