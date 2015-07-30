@@ -12,7 +12,7 @@ app = flask.Flask(__name__)
 app.secret_key = 'shhh, secret!'
 
 # redis.StrictRedis(host='localhost', port=6379, db=0, password=None, socket_timeout=None, connection_pool=None, charset='utf-8', errors='strict', unix_socket_path=None)
-red = redis.StrictRedis(password=secret3Kv)
+red = redis.StrictRedis(password=secret3v)
 
 
 #Start: gunicorn -b 128.199.140.153:8080 --worker-class=gevent -t 99999 chat:app
