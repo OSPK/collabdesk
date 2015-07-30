@@ -204,6 +204,8 @@ def login():
 		# TODO: If using a one-way hash, you would also hash the user-submitted
 		# password and do the comparison on the hashed versions.
 		if password == application.config['ADMIN_PASSWORD']:
+			user = flask.request.form['user']
+			flask.session['user'] = user
 			session['logged_in'] = True
 			session.permanent = True  # Use cookie to store session.
 			flash('You are now logged in.', 'success')
