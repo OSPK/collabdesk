@@ -9,7 +9,7 @@ from flask import render_template
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = flask.Flask(__name__)
-app.secret_key = 'asdf'
+app.secret_key = 'shhh, secret!'
 red = redis.StrictRedis()
 
 
