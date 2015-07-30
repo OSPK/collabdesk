@@ -87,8 +87,8 @@ def stream():
 def home():
 	if 'user' not in flask.session:
 		return flask.redirect('/login')
-	pubsub = red.pubsub()
-	numsub = pubsub.subscription_count
+	#pubsub = red.pubsub()
+	#numsub = pubsub.subscription_count
 	msgs = Msg.query.order_by(Msg.time.desc()).all()
 	user = flask.session['user']
 
