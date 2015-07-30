@@ -201,12 +201,12 @@ def login():
 	next_url = request.args.get('next') or request.form.get('next')
 	if request.method == 'POST' and request.form.get('password'):
 		password = request.form.get('password')
+		user = request.form.get('user')
 		# TODO: If using a one-way hash, you would also hash the user-submitted
 		# password and do the comparison on the hashed versions.
 		if password == application.config['ADMIN_PASSWORD']:
-			user = request.form.get('user')
-			flask.session['user'] = user
 			session['logged_in'] = True
+			flask.session['user'] = user
 			session.permanent = True  # Use cookie to store session.
 			flash('You are now logged in.', 'success')
 			return redirect(next_url or url_for('index'))
