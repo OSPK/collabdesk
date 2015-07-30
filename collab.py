@@ -72,9 +72,6 @@ api = tweepy.API(auth)
 #Simple Cache
 cache = Cache(application,config={'CACHE_TYPE': 'simple'})
 
-#Uploads Folder
-application.config['UPLOAD_FOLDER'] = 'uploads/'
-
 
 class Entry(flask_db.Model):
 	title = CharField()
