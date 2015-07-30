@@ -55,7 +55,8 @@ def event_stream():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	if flask.request.method == 'POST':
-		flask.session['user'] = flask.request.form['user']
+		usrcap = flask.request.form['user']
+		flask.session['user'] = usrcap.upper()
 		return flask.redirect('/')
 	return '<form action="" method="post">You Name: <input class="form-control" name="user">'
 
