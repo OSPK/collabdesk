@@ -85,12 +85,11 @@ def stream():
 def home():
 	if 'user' not in flask.session:
 		return flask.redirect('/login')
-
+	numsub = pubsub.subscription_count
 	msgs = Msg.query.order_by(Msg.time.desc()).all()
-
 	user = flask.session['user']
 
-	return render_template('chat.html', user=user, msgs=msgs)
+	return render_template('chat.html', user=user, msgs=msgs, numsub=numsub)
 
 
 if __name__ == '__main__':
