@@ -8,6 +8,11 @@
 </head>
 <body>
 	<p><b>hi, {{ user }}</b></p>
+	<small class="pull-right"><span class="label label-success">Users Online:</span>
+		{% for online in online %}
+			{{online}} /
+		{% endfor %}
+	</small>
 	<p>Message: <input class="form-control" id="in" /></p>
 	<div id="out"></div>
 	<div class="old">

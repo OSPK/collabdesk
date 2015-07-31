@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import os.path
+import time
 import datetime
 import flask
 import redis
@@ -53,6 +54,36 @@ def event_stream():
 		print message
 		yield 'data: %s\n\n' % message['data']
 
+app.config['ONLINE_LAST_MINUTES'] = 5
+
+def mark_online(user_id):
+	now = int(time.time())
+	expires = now + (app.config['ONLINE_LAST_MINUTES'] * 60) + 10
+	all_users_key = 'online-users/%d' % (now // 60)
+	user_key = 'user-activity/%s' % user_id
+	p = red.pipeline()
+	p.sadd(all_users_key, user_id)
+	p.set(user_key, now)
+	p.expireat(all_users_key, expires)
+	p.expireat(user_key, expires)
+	p.execute()
+
+def get_user_last_activity(user_id):
+	last_active = red.get('user-activity/%s' % user_id)
+	if last_active is None:
+		return None
+	return datetime.utcfromtimestamp(int(last_active))
+
+def get_online_users():
+	current = int(time.time()) // 60
+	minutes = xrange(app.config['ONLINE_LAST_MINUTES'])
+	return red.sunion(['online-users/%d' % (current - x) for x in minutes])
+
+@app.before_request
+def mark_current_user_online():
+	if 'user' in flask.session:
+		user = flask.session['user']
+		mark_online(user)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -87,10 +118,12 @@ def stream():
 def home():
 	if 'user' not in flask.session:
 		return flask.redirect('/login')
+
+	online = get_online_users()
 	msgs = Msg.query.order_by(Msg.time.desc()).all()
 	user = flask.session['user']
 
-	return render_template('chat.html', user=user, msgs=msgs)
+	return render_template('chat.html', user=user, msgs=msgs, online=online)
 
 
 if __name__ == '__main__':
