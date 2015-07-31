@@ -2,9 +2,10 @@
 <html>
 <head>
 	<title>chat</title>
-	<script src="{{ url_for('static', filename='js/jquery-1.11.0.min.js') }}" type="text/javascript"></script>
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}" type="text/javascript"></script>
 	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
 	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}" />
+	<script src="{{ url_for('static', filename='js/titlealert.js') }}" type="text/javascript"></script>
 </head>
 <body>
 	<p><b>hi, {{ user }}</b></p>
@@ -26,7 +27,21 @@
 			var out = document.getElementById('out');
 			source.onmessage = function(e) {
 				// XSS in chat is fun
-				out.innerHTML =  e.data + '<br>' + out.innerHTML;
+				out.innerHTML =  e.data + '' + out.innerHTML;
+
+				var titl = e.data.replace(/<\/?[^>]+(>|$)/g, "");
+				document.title = titl;
+				parent.document.title = titl;
+
+				$("title","head").text(titl).trigger("change");
+				window.parent.$("title","head").text(titl).trigger("change");
+				
+				$.titleAlert(titl, {
+				    requireBlur:true,
+				    stopOnFocus:true,
+				    interval:600
+				});
+
 			};
 		}
 		$('#in').keyup(function(e){
