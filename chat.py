@@ -92,7 +92,7 @@ def home():
 	msgs = Msg.query.order_by(Msg.time.desc()).all()
 	user = flask.session['user']
 
-	return render_template('chat.html', user=user, msgs=msgs, numsub=numsub)
+	return render_template('chat.html', user=user, msgs=msgs)
 
 
 if __name__ == '__main__':
