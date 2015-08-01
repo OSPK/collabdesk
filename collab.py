@@ -192,7 +192,7 @@ def done_count():
 		b += 1
 	return b
 
-def home_url():
+''' def home_url():
 	home_url = url_for('index')
 	#url = urlparse(home)
 	#home_url = url.hostname
@@ -201,8 +201,9 @@ def home_url():
 		home_url = 'http://localhost'
 
 	return home_url
+	'''
 
-application.jinja_env.globals.update(draft_count=draft_count, done_count=done_count, home_url=home_url)
+application.jinja_env.globals.update(draft_count=draft_count, done_count=done_count)
 
 
 
