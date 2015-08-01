@@ -9,11 +9,6 @@ h3, .h3 {
 .story:nth-child(even) {
 	background-color: #e3e3e3;
 }
-.edit-link {
-	position:absolute;
-	right:5px;
-	top:5px;
-}
 .black {
 	color: black;
 }
