@@ -37,21 +37,30 @@
 					var titl = e.data.replace(/<\/?[^>]+(>|$)/g, "");
 					document.title = titl;
 					parent.document.title = titl;
-					//play sound on msg
-					audio.play();
 
+					//check if window has focus
+					$(window).focus(function() {
+					    window_focus = true;
+					}).blur(function() {
+					    window_focus = false;
+					});
+					//play sound on msg if window not focused
+					if (window_focus==false) {
+						audio.play();
+					};
+					
+					//Alert in title
 					$.titleAlert("New chat message!", {
 					    requireBlur:true,
 					    stopOnFocus:true,
-					    duration:4000,
-					    interval:700
+					    duration:0,
+					    interval:200
 					});
-
 					parent.$.titleAlert("New chat message!", {
 					    requireBlur:true,
 					    stopOnFocus:true,
-					    duration:4000,
-					    interval:700
+					    duration:0,
+					    interval:200
 					});
 				};
 			}
