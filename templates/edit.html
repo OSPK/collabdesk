@@ -5,7 +5,7 @@
 {% block content_title %}Edit entry{% endblock %}
 
 {% block content %}
-  <form action="{{ url_for('edit', slug=entry.slug) }}" class="form-horizontal" method="post">
+  <form action="{{ url_for('edit', id=entry.id) }}" class="form-horizontal" method="post">
     <div class="form-group">
       <label for="title" class="col-sm-2 control-label">Headline</label>
       <div class="col-sm-10">
@@ -55,11 +55,11 @@
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <button class="btn btn-primary" type="submit">Save</button>
-        <a class="btn btn-default" href="/{{ entry.slug }}">Cancel</a>
+        <a class="btn btn-default" href="/{{ entry.id }}">Cancel</a>
       </div>
     </div>
   </form>
-  <form action="{{ url_for('delete', slug=entry.slug) }}" method="POST" class="pull-right">
+  <form action="{{ url_for('delete', id=entry.id) }}" method="POST" class="pull-right">
     <button type="submit" class="btn btn-lg">Delete</button>
   </form>
 {% endblock %}

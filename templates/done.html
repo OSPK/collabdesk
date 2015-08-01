@@ -10,9 +10,9 @@
       {% set entry = entry.entry %}
     {% endif %}
     <h3>
-      <a href="{{ url_for('detail', slug=entry.slug) }}">{{ entry.title }}</a>
-      <a href="{{ url_for('edit', slug=entry.slug) }}"><button class="btn btn-lg">Edit</button></a>
-      <a class="graphic-link" href="/graphic/{{ entry.slug }}"><button class="btn btn-lg btn-warning">Graphic</button></a>
+      <a href="{{ url_for('detail', id=entry.id) }}">{{ entry.title }}</a>
+      <a href="{{ url_for('edit', id=entry.id) }}"><button class="btn btn-lg">Edit</button></a>
+      <a class="graphic-link" href="{{ url_for('graphic', id=entry.id) }}"><button class="btn btn-lg btn-warning">Graphic</button></a>
     </h3>
     <p>Created {{ entry.timestamp.strftime('%m/%d/%Y at %G:%I%p') }}</p>
   {% else %}

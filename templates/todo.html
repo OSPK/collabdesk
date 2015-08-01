@@ -23,9 +23,9 @@
       <h3><span class="label label-default">Headline</span> {{ entry.title }}</h3>
       <h3><span class="label label-default">Facebook Headline</span> {{ entry.fbtitle|safe }}</h3>
       <p><span class="label label-info">Notes</span> {{ entry.html_content }}</p>
-      <a class="graphic-link" href="/graphic/{{ entry.slug }}"><button class="btn btn-warning">Graphic</button></a>
+      <a class="graphic-link" href="{{ url_for('graphic', id=entry.id) }}"><button class="btn btn-warning">Graphic</button></a>
 
-      <form action="{{ url_for('update', slug=entry.slug) }}" class="form-horizontal" method="post">
+      <form action="{{ url_for('update', id=entry.id) }}" class="form-horizontal" method="post">
         <span class="label label-default">Published status with link</span>
         <div class="input-group">
           <span class="input-group-addon">
@@ -38,7 +38,7 @@
         </div><!-- /input-group -->
       </form>
 
-      <a class="edit-link" href="{{ url_for('edit', slug=entry.slug) }}"><button class="btn btn-xs">Edit</button></a>
+      <a class="edit-link" href="{{ url_for('edit', id=entry.id) }}"><button class="btn btn-xs">Edit</button></a>
     </article>
     {% else %}
       <p>No entries have been created yet.</p>

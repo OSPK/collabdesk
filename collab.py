@@ -75,6 +75,7 @@ cache = Cache(application,config={'CACHE_TYPE': 'simple'})
 
 
 class Entry(flask_db.Model):
+	id = PrimaryKeyField()
 	title = CharField()
 	fbtitle = CharField()
 	link = CharField()
@@ -306,7 +307,7 @@ def create():
 				published=request.form.get('published') or False)
 			flash('Entry created successfully.', 'success')
 			if entry.published:
-				return redirect(url_for('detail', slug=entry.slug))
+				return redirect(url_for('detail', id=entry.id))
 			else:
 				return redirect(url_for('create'))
 		else:
@@ -320,14 +321,14 @@ def drafts():
 
 	return object_list('todo.html', query, check_bounds=False)
 
-@application.route('/<slug>/')
+@application.route('/<id>/')
 @login_required
-def detail(slug):
+def detail(id):
 	if session.get('logged_in'):
 		query = Entry.select()
 	else:
 		query = Entry.public()
-	entry = get_object_or_404(query, Entry.slug == slug)
+	entry = get_object_or_404(query, Entry.id == id)
 
 	#fblink = urllib.quote_plus(entry.publink)
 	fburl = ('https://api.facebook.com/method/links.getStats?urls=%s&format=json' % entry.publink)
@@ -340,10 +341,10 @@ def detail(slug):
 
 	return render_template('detail.html', entry=entry, fbshares=fbshares, twshares=twshares)
 
-@application.route('/<slug>/edit/', methods=['GET', 'POST'])
+@application.route('/<id>/edit/', methods=['GET', 'POST'])
 @login_required
-def edit(slug):
-	entry = get_object_or_404(Entry, Entry.slug == slug)
+def edit(id):
+	entry = get_object_or_404(Entry, Entry.id == id)
 	if request.method == 'POST':
 		if request.form.get('title') and request.form.get('link'):
 			entry.title = request.form['title']
@@ -357,30 +358,30 @@ def edit(slug):
 
 			flash('Entry saved successfully.', 'success')
 			if entry.published:
-				return redirect(url_for('detail', slug=entry.slug))
+				return redirect(url_for('detail', id=entry.id))
 				#return redirect(url_for('drafts'))
 			else:
-				#return redirect(url_for('edit', slug=entry.slug))
+				#return redirect(url_for('edit', id=entry.id))
 				return redirect(url_for('drafts'))
 		else:
 			flash('Title and Link are required.', 'danger')
 
 	return render_template('edit.html', entry=entry)
 
-@application.route('/<slug>/delete/', methods=['POST'])
+@application.route('/<id>/delete/', methods=['POST'])
 @login_required
-def delete(slug):
+def delete(id):
 	if request.method == 'POST':
-		q = Entry.delete().where(Entry.slug == slug)
+		q = Entry.delete().where(Entry.id == id)
 		q.execute()  # remove the rows
 		flash('Entry deleted successfully.', 'danger')
 
 	return redirect(url_for('drafts'))
 
-@application.route('/<slug>/update/', methods=['GET', 'POST'])
+@application.route('/<id>/update/', methods=['GET', 'POST'])
 @login_required
-def update(slug):
-	entry = get_object_or_404(Entry, Entry.slug == slug)
+def update(id):
+	entry = get_object_or_404(Entry, Entry.id == id)
 	if request.method == 'POST':
 		entry.publink=request.form['publink']
 		entry.published = request.form.get('published') or False
@@ -388,22 +389,22 @@ def update(slug):
 
 		flash('Entry saved successfully.', 'success')
 		if entry.published:
-			#return redirect(url_for('detail', slug=entry.slug))
+			#return redirect(url_for('detail', id=entry.id))
 			return redirect(url_for('drafts'))
 		else:
-			#return redirect(url_for('edit', slug=entry.slug))
+			#return redirect(url_for('edit', id=entry.id))
 			return redirect(url_for('drafts'))
 
 	return render_template('edit.html', entry=entry)
 
-@application.route('/graphic/<slug>/')
+@application.route('/<id>/graphic/')
 @login_required
-def graphic(slug):
+def graphic(id):
 	if session.get('logged_in'):
 		query = Entry.select()
 	else:
 		query = Entry.public()
-	entry = get_object_or_404(query, Entry.slug == slug)
+	entry = get_object_or_404(query, Entry.id == id)
 
 	bust = random.random()
 
@@ -418,14 +419,14 @@ def graphic(slug):
 
 	return render_template('graphic.html', entry=entry, bust=bust)
 
-@application.route('/graphic/<slug>/update')
+@application.route('/graphic/<id>/update')
 @login_required
-def graphic_update(slug):
+def graphic_update(id):
 	if session.get('logged_in'):
 		query = Entry.select()
 	else:
 		query = Entry.public()
-	entry = get_object_or_404(query, Entry.slug == slug)
+	entry = get_object_or_404(query, Entry.id == id)
 
 	filename = entry.slug
 	savefile = 'static/images/'+filename+'.png'
@@ -435,7 +436,7 @@ def graphic_update(slug):
 	with open(savefile, 'wb') as f:
 		f.write(imgfile.content)
 
-	return redirect(url_for('graphic', slug=entry.slug))
+	return redirect(url_for('graphic', id=entry.id))
 
 @application.template_filter('clean_querystring')
 def clean_querystring(request_args, *keys_to_remove, **new_values):
