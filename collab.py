@@ -4,6 +4,7 @@ import os
 import os.path
 import re
 import urllib, json
+from urlparse import urlparse
 import requests
 import random
 
@@ -191,7 +192,15 @@ def done_count():
 		b += 1
 	return b
 
-application.jinja_env.globals.update(draft_count=draft_count, done_count=done_count)
+def home_url():
+	home = url_for('index')
+	url = urlparse(home)
+	home_url = url.hostname  # will display '127.0.0.1'
+	if home_url is None:
+		home_url = 'http://localhost'
+	return home_url
+
+application.jinja_env.globals.update(draft_count=draft_count, done_count=done_count, home_url=home_url)
 
 
 
@@ -224,12 +233,11 @@ def logout():
 @application.route('/')
 @login_required
 def index():
-	test="hi"
 	# The `object_list` helper will take a base query and then handle
 	# paginating the results if there are more than 20. For more info see
 	# the docs:
 	# http://docs.peewee-orm.com/en/latest/peewee/playhouse.html#object_list
-	return render_template('home.html', test=test)
+	return render_template('home.html')
 
 @application.route('/trends/')
 @cache.cached(timeout=1800)
