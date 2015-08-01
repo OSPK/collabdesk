@@ -195,7 +195,8 @@ def done_count():
 def home_url():
 	home = url_for('index')
 	url = urlparse(home)
-
+	home_url = url.hostname
+	
 	if home_url is None:
 		home_url = 'http://localhost'
 	else:
