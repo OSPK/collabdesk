@@ -22,9 +22,11 @@
 
 	<h3><span class="label label-warning">Twitter Shares</span> {{twshares.count}}</h3>
 
-
   <hr>
   {% if session.logged_in %}
     <a href="{{ url_for('edit', slug=entry.slug) }}"><button class="btn btn-lg btn-primary">Edit</button></a>
+    <form action="{{ url_for('delete', slug=entry.slug) }}" method="POST" class="pull-right">
+    	<button type="submit" class="btn btn-lg">Delete</button>
+    </form>
   {% endif %}
 {% endblock %}

@@ -10,10 +10,6 @@
       {% set entry = entry.entry %}
     {% endif %}
     <h3>
-      <form action="{{ url_for('delete', slug=entry.slug) }}" method="POST" class="pull-right">
-        <button type="submit" class="btn btn-lg">Delete</button>
-      </form>
-
       <a href="{{ url_for('detail', slug=entry.slug) }}">{{ entry.title }}</a>
       <a href="{{ url_for('edit', slug=entry.slug) }}"><button class="btn btn-lg">Edit</button></a>
       <a class="graphic-link" href="/graphic/{{ entry.slug }}"><button class="btn btn-lg btn-warning">Graphic</button></a>
