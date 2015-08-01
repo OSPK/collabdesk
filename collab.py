@@ -193,14 +193,14 @@ def done_count():
 	return b
 
 def home_url():
-	home = str(url_for('index'))
-	url = urlparse(home)
-	home_url = url.hostname
+	home = url_for('index')
+	#url = urlparse(home)
+	#home_url = url.hostname
 
 	if home_url is None:
-		home_url = 'http://localhost'
+		home = 'http://localhost'
 	else:
-		home_url = url.hostname  # will display '127.0.0.1'
+		home = home  # will display '127.0.0.1'
 
 	return home_url
 
