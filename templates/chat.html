@@ -23,10 +23,14 @@
 			function sse() {
 				var source = new EventSource('/stream');
 				var out = document.getElementById('out');
+				//play sound on msg
+				var audio = new Audio('{{ url_for("static", filename="notification.mp3") }}');
+
 				source.onmessage = function(e) {
 					// XSS in chat is fun
 					out.innerHTML =  e.data + '' + out.innerHTML;
 
+					//set title on msg
 					var titl = e.data.replace(/<\/?[^>]+(>|$)/g, "");
 					document.title = titl;
 					parent.document.title = titl;
@@ -39,6 +43,9 @@
 					    stopOnFocus:true,
 					    interval:600
 					});
+
+					//play sound on msg
+					audio.play();
 
 				};
 			}
