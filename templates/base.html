@@ -77,18 +77,7 @@
 			</footer>
 		</div>
 <script type="text/javascript">
-// set up an observer for the title element
-var target = document.querySelector('head > title');
-var observer = new window.WebKitMutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-        $.titleAlert(mutation.target.textContent, {
-			requireBlur:true,
-			stopOnFocus:true,
-			interval:600
-		});
-    });
-});
-observer.observe(target, { subtree: true, characterData: true, childList: true });
+	document.domain = '{{ home_url() }}';
 </script>
 	</body>
 </html>

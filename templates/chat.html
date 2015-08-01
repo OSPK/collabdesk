@@ -21,11 +21,13 @@
 		{% endfor %}
 		</div>
 		<script>
+		document.domain = '{{ home_url() }}';
+
 			function sse() {
 				var source = new EventSource('/stream');
 				var out = document.getElementById('out');
 				//play sound on msg
-				var audio = new Audio('/static/notification.mp3');
+				var audio = new Audio('{{ url_for("static", filename="notification.mp3") }}');
 
 				source.onmessage = function(e) {
 					// XSS in chat is fun
@@ -35,19 +37,22 @@
 					var titl = e.data.replace(/<\/?[^>]+(>|$)/g, "");
 					document.title = titl;
 					parent.document.title = titl;
+					//play sound on msg
+					audio.play();
 
-					$("title","head").text(titl).trigger("change");
-					window.parent.$("title","head").text(titl).trigger("change");
-					
-					$.titleAlert(titl, {
+					$.titleAlert("New chat message!", {
 					    requireBlur:true,
 					    stopOnFocus:true,
-					    interval:600
+					    duration:4000,
+					    interval:700
 					});
 
-					//play sound on msg
-					window.parent.audio.play();
-					//sound('/static/notification.mp3');
+					parent.$.titleAlert("New chat message!", {
+					    requireBlur:true,
+					    stopOnFocus:true,
+					    duration:4000,
+					    interval:700
+					});
 				};
 			}
 			$('#in').keyup(function(e){

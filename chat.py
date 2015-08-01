@@ -5,7 +5,8 @@ import time
 import datetime
 import flask
 import redis
-from flask import render_template
+from urlparse import urlparse
+from flask import render_template, request
 
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -84,6 +85,14 @@ def mark_current_user_online():
 	if 'user' in flask.session:
 		user = flask.session['user']
 		mark_online(user)
+
+def home_url():
+	url = request.url_root
+	url = urlparse(url)
+	home_url = url.hostname
+	return home_url
+
+app.jinja_env.globals.update(home_url=home_url)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
