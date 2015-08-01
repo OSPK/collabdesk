@@ -59,4 +59,7 @@
       </div>
     </div>
   </form>
+  <form action="{{ url_for('delete', slug=entry.slug) }}" method="POST" class="pull-right">
+    <button type="submit" class="btn btn-lg">Delete</button>
+  </form>
 {% endblock %}

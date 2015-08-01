@@ -356,6 +356,16 @@ def edit(slug):
 
 	return render_template('edit.html', entry=entry)
 
+@application.route('/<slug>/delete/', methods=['POST'])
+@login_required
+def delete(slug):
+	if request.method == 'POST':
+		q = Entry.delete().where(Entry.slug == slug)
+		q.execute()  # remove the rows
+		flash('Entry deleted successfully.', 'danger')
+
+	return redirect(url_for('drafts'))
+
 @application.route('/<slug>/update/', methods=['GET', 'POST'])
 @login_required
 def update(slug):
