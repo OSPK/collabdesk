@@ -198,7 +198,7 @@ def home_url():
 
 	if home_url is None:
 		home_url = 'http://localhost'
-	elif:
+	else:
 		home_url = url.hostname  # will display '127.0.0.1'
 
 	return home_url
