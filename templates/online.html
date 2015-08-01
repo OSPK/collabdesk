@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ 	<title>Users Online</title>
+ 	<meta http-equiv="refresh" content="15" />
+ </head>
+ <body>
+	 <small><span style="color:green;">Users Online:</span>
+		{% for online in online %}
+			{{online}} /
+		{% endfor %}
+	</small>
+ </body>
+ </html>

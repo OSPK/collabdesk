@@ -10,10 +10,7 @@
 <body>
 	<div class="container-fluid">
 		<p><b>hi, {{ user }}</b></p>
-		<small class="pull-right"><span class="label label-success">Users Online:</span>
-			{% for online in online %}
-				{{online}} /
-			{% endfor %}
+		<iframe src="{{ url_for('online') }}" style="border:0; width:100%; height:40px;"></iframe>
 		</small>
 		<p>Message: <input class="form-control" id="in" /></p>
 		<div id="out"></div>

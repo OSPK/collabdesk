@@ -113,17 +113,24 @@ def post():
 def stream():
 	return flask.Response(event_stream(), mimetype="text/event-stream")
 
+@app.route('/online')
+def online():
+	if 'user' not in flask.session:
+		return flask.redirect('/login')
+
+	online = get_online_users()
+
+	return render_template('online.html', online=online)
 
 @app.route('/')
 def home():
 	if 'user' not in flask.session:
 		return flask.redirect('/login')
 
-	online = get_online_users()
 	msgs = Msg.query.order_by(Msg.time.desc()).all()
 	user = flask.session['user']
 
-	return render_template('chat.html', user=user, msgs=msgs, online=online)
+	return render_template('chat.html', user=user, msgs=msgs)
 
 
 if __name__ == '__main__':
