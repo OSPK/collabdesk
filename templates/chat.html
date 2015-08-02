@@ -6,7 +6,6 @@
 	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
 	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}" />
 	<script src="{{ url_for('static', filename='js/titlealert.js') }}" type="text/javascript"></script>
-	<script src="{{ url_for('static', filename='js/ion.sound.min.js') }}" type="text/javascript"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -49,19 +48,24 @@
 						audio.play();
 					};
 					
-					//Alert in title
-					$.titleAlert("New chat message!", {
-					    requireBlur:true,
-					    stopOnFocus:true,
-					    duration:0,
-					    interval:200
-					});
-					parent.$.titleAlert("New chat message!", {
-					    requireBlur:true,
-					    stopOnFocus:true,
-					    duration:0,
-					    interval:200
-					});
+					if (window_focus==false) {
+						//Alert in title
+						$.titleAlert("New message!", {
+						    requireBlur:true,
+						    stopOnFocus:true,
+						    stopOnMouseMove:true,
+						    duration:0,
+						    interval:200
+						});
+
+						parent.$.titleAlert("New message!", {
+						    requireBlur:true,
+						    stopOnFocus:true,
+						    stopOnMouseMove:true,
+						    duration:0,
+						    interval:200
+						});
+					};
 				};
 			}
 			$('#in').keyup(function(e){
