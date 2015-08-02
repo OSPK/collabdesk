@@ -12,7 +12,7 @@
       <a class="pull-right" href="{{ url_for('edit', id=entry.id) }}"><button class="btn btn-lg">Edit</button></a>
       <a class="graphic-link pull-right" href="{{ url_for('graphic', id=entry.id) }}"><button class="btn btn-lg btn-warning">Graphic</button></a>
       <h2><a href="{{ url_for('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
-      <p><span class="h3 label label-default">ID: {{ entry.id }}</span><small> Created {{ entry.timestamp.strftime('%m/%d/%Y at %G:%I%p') }}</small></p>
+      <p><span class="h3 label label-default">ID: {{ entry.id }}</span><small> Created {{ entry.timestamp.strftime('%H:%m %d/%m/%Y') }}</small></p>
       
   {% else %}
     <p>No entries have been created yet.</p>

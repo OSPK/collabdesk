@@ -19,7 +19,7 @@
       {% endif %}
       <a class="edit-link pull-right" href="{{ url_for('edit', id=entry.id) }}"><button class="btn btn-xs">Edit</button></a>
       <a class="graphic-link pull-right" href="{{ url_for('graphic', id=entry.id) }}"><button class="btn btn-xs btn-warning">Graphic</button></a>
-      <p><span class="h3 label label-default">ID: {{ entry.id }}</span><small> Created {{ entry.timestamp.strftime('%m/%d/%Y at %G:%I%p') }}</small></p>
+      <p><span class="h3 label label-default">ID: {{ entry.id }}</span><small> Created {{ entry.timestamp.strftime('%H:%m %d/%m/%Y') }}</small></p>
       <h4><span class="label label-primary">Source Link</span> <a href="{{ entry.link }}">{{ entry.link }}</a></h4>
       <h3><span class="label label-default">Headline</span> {{ entry.title }}</h3>
       <h3><span class="label label-default">Facebook Headline</span> {{ entry.fbtitle|safe }}</h3>
