@@ -23,7 +23,7 @@
 	line-height: {{'{{lineheight}}px'}};
 	}
 	.graphic {
-		/**background-image: url('{{ url_for('static', filename='images/'+entry.id+'.png') }}');**/
+		/**background-image: url('/{{ savefile }}');**/
 		background-position: 0px 0px;
 	}
 	.inner {
@@ -83,7 +83,7 @@
 		<div class="graphic-container">
 			<div id="style1" class="graphic style1">
 				<div class="inner">
-					<img class="storyimage" src="{{ url_for('static', filename='images/'+entry.id+'.png') }}?{{ bust }}">
+					<img class="storyimage" src="/{{ savefile }}?{{ bust }}">
 					<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
 					<div class="headline"><div class="hdinner">{{ entry.fbtitle|safe }}</div></div>
 					<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
@@ -97,7 +97,7 @@
 		<div class="graphic-container">
 			<div id="style2" class="graphic style2">
 				<div class="inner">
-					<img class="storyimage" src="{{ url_for('static', filename='images/'+entry.id+'.png') }}?{{ bust }}">
+					<img class="storyimage" src="/{{ savefile }}?{{ bust }}">
 					<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
 					<div class="headline"><div class="hdinner">{{ entry.fbtitle|safe }}</div></div>
 					<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
@@ -110,7 +110,7 @@
 	<div role="tabpanel" class="tab-pane" id="3">
 		<div class="graphic-container">
 			<div id="style3" class="graphic style3">
-				<img class="storyimage" src="{{ url_for('static', filename='images/'+entry.id+'.png') }}?{{ bust }}">
+				<img class="storyimage" src="/{{ savefile }}?{{ bust }}">
 				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
 				<div class="headline inner"><div class="hdinner"><div>{{ entry.fbtitle|safe }}</div></div></div>
 				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
@@ -122,7 +122,7 @@
 	<div role="tabpanel" class="tab-pane" id="4">
 		<div class="graphic-container">
 			<div id="style4" class="graphic style4">
-				<img class="storyimage" src="{{ url_for('static', filename='images/'+entry.id+'.png') }}?{{ bust }}">
+				<img class="storyimage" src="/{{ savefile }}?{{ bust }}">
 				<img class="logo" src="{{ url_for('static', filename='logo.png') }}">
 				<div class="headline inner"><div class="hdinner"><div>{{ entry.fbtitle|safe }}</div></div></div>
 				<p class="info">en.dailypakistan.com.pk <span class="black">|</span> fb.com/dailypakistan.en <span class="black">|</span> twitter.com/dailypakistangl</p>
