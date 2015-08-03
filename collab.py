@@ -404,7 +404,7 @@ def graphic(id):
 
 	bust = random.random()
 
-	filename = entry.slug
+	filename = entry.id
 	savefile = 'static/images/'+filename+'.png'
 
 	if not os.path.isfile(savefile):
@@ -415,7 +415,7 @@ def graphic(id):
 
 	return render_template('graphic.html', entry=entry, bust=bust)
 
-@application.route('/graphic/<id>/update')
+@application.route('/<id>/graphic/update')
 @login_required
 def graphic_update(id):
 	if session.get('logged_in'):
@@ -424,7 +424,7 @@ def graphic_update(id):
 		query = Entry.public()
 	entry = get_object_or_404(query, Entry.id == id)
 
-	filename = entry.slug
+	filename = entry.id
 	savefile = 'static/images/'+filename+'.png'
 
 	imgfile = requests.get(entry.imgurl)
