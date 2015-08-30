@@ -50,6 +50,9 @@
 	<h3>
 		<span class="label label-primary">Published Link</span> <a href="{{ entry.publink }}">{{ entry.publink }}</a>
 	</h3>
+	<a class="pull-right" href="{{ url_for('update', id=entry.id) }}">
+		<button class="btn btn-lg">Update</button>
+	</a>
 	<a class="pull-right" href="{{ url_for('edit', id=entry.id) }}">
 		<button class="btn btn-lg">Edit</button>
 	</a>
