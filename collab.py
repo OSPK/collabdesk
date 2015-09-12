@@ -58,6 +58,9 @@ flask_db = FlaskDB(application)
 # The `database` is the actual peewee database, as opposed to flask_db which is
 # the wrapper.
 database = flask_db.database
+# >>> database.connect()
+# >>> database.create_tables([Entry])
+
 
 # Configure micawber with the default OEmbed providers (YouTube, Flickr, etc).
 # We'll use a simple in-memory cache so that multiple requests for the same
@@ -307,7 +310,7 @@ def create():
 			if entry.published:
 				return redirect(url_for('detail', id=entry.id))
 			else:
-				return redirect(url_for('create'))
+				return redirect(url_for('graphic', id=entry.id))
 		else:
 			flash('Title and Link are required.', 'danger')
 	return render_template('create.html')
