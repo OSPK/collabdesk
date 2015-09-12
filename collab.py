@@ -294,12 +294,12 @@ def create():
 	if request.method == 'POST':
 		if request.form.get('title') and request.form.get('link'):
 			entry = Entry.create(
-				title=request.form['title'],
-				fbtitle=request.form['fbtitle'],
+				title=unicode(request.form['title']),
+				fbtitle=unicode(request.form['fbtitle']),
 				link=request.form['link'],
 				imgurl=request.form['imgurl'],
 				publink=request.form['publink'],
-				content=request.form['content'],
+				content=unicode(request.form['content']),
 				published=request.form.get('published') or False)
 			flash('Entry created successfully.', 'success')
 			if entry.published:
