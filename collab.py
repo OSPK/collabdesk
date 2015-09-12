@@ -81,7 +81,7 @@ class Entry(flask_db.Model):
 	link = CharField()
 	publink = CharField()
 	imgurl = CharField()
-	slug = CharField(unique=True)
+	slug = CharField()
 	content = TextField()
 	published = BooleanField(index=True)
 	timestamp = DateTimeField(default=datetime.datetime.now, index=True)
