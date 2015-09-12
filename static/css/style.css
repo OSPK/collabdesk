@@ -109,10 +109,11 @@ h3, .h3 {
   z-index: 100;
   width: 100%;
   top: 0px;
-  left: 0px;
+  right: 0px;
   line-height: 110px;
   padding: 0px 20px 0px 50px;
   height: 100%;
+  text-align: right;
 }
 .style2 .hdinner {
   margin: auto;
