@@ -1,3 +1,7 @@
+* {
+  font-family: "Jameel Noori Nastaleeq";
+  direction: rtl;
+  }
 ::selection {
   background: #F2CC38;
 }
