@@ -15,8 +15,15 @@
 
 {% block content %}
 <style type="text/css">
-	@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:700);
+	@font-face {
+    font-family: 'Nafees Nastaleeq';
+    src: url("{{ url_for('static', filename='fonts/nafees-nastaleeq-webfont.ttf') }}");
+     font-weight: normal;
+     font-size:0.8em!important;
+     line-height:2.5em!important;
+	}
 	.graphic-container .headline {
+	font-family: 'Nafees Nastaleeq';
 	font-size: {{'{{fontsize}}px'}};
 	line-height: {{'{{lineheight}}px'}};
 	}
