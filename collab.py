@@ -292,13 +292,15 @@ def done():
 @login_required
 def create():
 	if request.method == 'POST':
-		if request.form.get('title') and request.form.get('link'):
+		title = unicode(request.form.get('title'))
+		link = unicode(request.form.get('link'))
+		if title and link:
 			entry = Entry.create(
 				title=unicode(request.form['title']),
 				fbtitle=unicode(request.form['fbtitle']),
-				link=request.form['link'],
-				imgurl=request.form['imgurl'],
-				publink=request.form['publink'],
+				link=unicode(request.form['link']),
+				imgurl=unicode(request.form['imgurl']),
+				publink=unicode(request.form['publink']),
 				content=unicode(request.form['content']),
 				published=request.form.get('published') or False)
 			flash('Entry created successfully.', 'success')
