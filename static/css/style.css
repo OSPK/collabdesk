@@ -157,6 +157,7 @@ h3, .h3 {
   padding:0px;
   border-radius: 8px 0px 0px 0px;
   height: 100%;
+  text-align: right;
 }
 .style3 .hdinner {
   margin: auto 0px;
