@@ -45,6 +45,9 @@ h3, .h3 {
   padding: 3px 10px;
   background-color: rgba(34, 159, 236, 0.8);
 }
+.info {
+  font-family: sans-serif!important;
+}
 
 /**STYLE 1*******************************************************/
 .style1 .storyimage {
