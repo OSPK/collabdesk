@@ -2,13 +2,33 @@
  <html>
  <head>
  	<title>Users Online</title>
- 	<meta http-equiv="refresh" content="60" />
  </head>
  <body>
-	 <small><span style="color:green;">Users Online:</span>
+	 <small id="online"><span style="color:green;">Users Online:</span>
 		{% for online in online %}
 			{{online}} /
 		{% endfor %}
 	</small>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	   <script>
+	      function auto_load(){
+	        $.ajax({
+	          url: "online",
+	          cache: false,
+	          success: function(data){
+	             $("#online").html(data);
+	          } 
+	        });
+	      }
+	 
+	      $(document).ready(function(){
+	 
+	        auto_load(); //Call auto_load() function when DOM is Ready
+	 
+	      });
+	 
+	      //Refresh auto_load() function after 10000 milliseconds
+	      setInterval(auto_load,50000);
+	   </script>
  </body>
  </html>
