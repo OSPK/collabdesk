@@ -18,6 +18,7 @@
 	          success: function(data){
 	          	 var status = $(data).find('#online');
 	             $("#online").html(status);
+	             console.log(data); console.log(status);
 	          } 
 	        });
 	      }
