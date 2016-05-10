@@ -13,7 +13,7 @@
 	   <script>
 	      function auto_load(){
 	        $.ajax({
-	          url: "online",
+	          url: "online#online",
 	          cache: false,
 	          success: function(data){
 	             $("#online").html(data);
@@ -26,7 +26,7 @@
 	      // });
 	 
 	      //Refresh auto_load() function after 10000 milliseconds
-	      setInterval(auto_load,500000);
+	      setInterval(auto_load,15000);
 	   </script>
  </body>
  </html>
