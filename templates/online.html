@@ -13,10 +13,11 @@
 	   <script>
 	      function auto_load(){
 	        $.ajax({
-	          url: "online#online",
+	          url: "online",
 	          cache: false,
 	          success: function(data){
-	             $("#online").html(data);
+	          	 vat status = $(data).find('#online')
+	             $("#online").html(status);
 	          } 
 	        });
 	      }
