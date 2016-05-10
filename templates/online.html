@@ -16,19 +16,19 @@
 	          url: "online",
 	          cache: false,
 	          success: function(data){
-	             $("#online").html(data);
+	          	 var status = $(data).filter('#online');
+	             $("#online").html(status.html());
+	             //console.log(status.html());
 	          } 
 	        });
 	      }
 	 
-	      $(document).ready(function(){
-	 
-	        auto_load(); //Call auto_load() function when DOM is Ready
-	 
-	      });
+	      // $(document).ready(function(){
+	      //   auto_load(); //Call auto_load() function when DOM is Ready
+	      // });
 	 
 	      //Refresh auto_load() function after 10000 milliseconds
-	      setInterval(auto_load,50000);
+	      setInterval(auto_load,15000);
 	   </script>
  </body>
  </html>
