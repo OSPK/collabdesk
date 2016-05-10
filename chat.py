@@ -49,7 +49,7 @@ class Msg(db.Model):
 
 def event_stream():
 	pubsub = red.pubsub()
-	pubsub.subscribe('chat')
+	pubsub.subscribe('chat2')
 	# TODO: handle client disconnection.
 	for message in pubsub.listen():
 		print message
@@ -113,7 +113,7 @@ def post():
 	db.session.add(masg)
 	db.session.commit()
 	#red.publish('chat', u'[%s] %s: %s' % (now.isoformat(), user, message))
-	red.publish('chat', u'<p><strong>%s:</strong> %s </p>' % (user, message))
+	red.publish('chat2', u'<p><strong>%s:</strong><br> %s </p>' % (user, message))
 
 	return flask.Response(status=204)
 
