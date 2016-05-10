@@ -42,7 +42,9 @@ h3, .h3 {
   padding: 3px 10px;
   background-color: rgba(34, 159, 236, 0.8);
 }
-
+#out, .old {
+	    overflow-wrap: break-word;
+}
 /**STYLE 1*******************************************************/
 .style1 .storyimage {
 	width:100%;
