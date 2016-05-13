@@ -3,7 +3,9 @@ import functools
 import os
 import os.path
 import re
-import urllib, json
+import urllib
+import urllib2
+import json
 from urlparse import urlparse
 import requests
 import random
@@ -71,7 +73,7 @@ auth.set_access_token('3024265320-QPKgtETV2ge9jpWABDmciE9KtYu48pcJeLZM2XU', 'HMI
 api = tweepy.API(auth)
 
 # Simple Cache
-cache = Cache(application,config={'CACHE_TYPE': 'simple'})
+cache = Cache(application, config={'CACHE_TYPE': 'simple'})
 
 
 class Entry(flask_db.Model):
@@ -129,11 +131,11 @@ class Entry(flask_db.Model):
 
     @classmethod
     def public(cls):
-        return Entry.select().where(Entry.published == True)
+        return Entry.select().where(Entry.published is True)
 
     @classmethod
     def drafts(cls):
-        return Entry.select().where(Entry.published == False)
+        return Entry.select().where(Entry.published is False)
 
     @classmethod
     def search(cls, query):
@@ -154,9 +156,10 @@ class Entry(flask_db.Model):
                     FTSEntry.rank().alias('score'))
                 .join(Entry, on=(FTSEntry.entry_id == Entry.id).alias('entry'))
                 .where(
-                    (Entry.published == True) &
+                    (Entry.published is True) &
                     (FTSEntry.match(search)))
                 .order_by(SQL('score').desc()))
+
 
 class FTSEntry(FTSModel):
     entry_id = IntegerField(Entry)
@@ -165,6 +168,7 @@ class FTSEntry(FTSModel):
     class Meta:
         database = database
 
+
 def login_required(fn):
     @functools.wraps(fn)
     def inner(*args, **kwargs):
@@ -172,6 +176,7 @@ def login_required(fn):
             return fn(*args, **kwargs)
         return redirect(url_for('login', next=request.path))
     return inner
+
 
 def draft_count():
     query = 0
@@ -183,6 +188,7 @@ def draft_count():
         a += 1
     return a
 
+
 def done_count():
     query = 0
 
@@ -193,6 +199,7 @@ def done_count():
         b += 1
     return b
 
+
 def home_url():
     url = request.url_root
     url = urlparse(url)
@@ -201,8 +208,6 @@ def home_url():
     return home_url
 
 application.jinja_env.globals.update(draft_count=draft_count, done_count=done_count, home_url=home_url)
-
-
 
 
 @application.route('/login/', methods=['GET', 'POST'])
@@ -223,12 +228,14 @@ def login():
             flash('Incorrect password.', 'danger')
     return render_template('login.html', next_url=next_url)
 
+
 @application.route('/logout/', methods=['GET', 'POST'])
 def logout():
     if request.method == 'POST':
         session.clear()
         return redirect(url_for('login'))
     return render_template('logout.html')
+
 
 @application.route('/')
 @login_required
@@ -238,6 +245,7 @@ def index():
     # the docs:
     # http://docs.peewee-orm.com/en/latest/peewee/playhouse.html#object_list
     return render_template('home.html')
+
 
 @application.route('/trends/')
 @cache.cached(timeout=1800)
@@ -269,6 +277,7 @@ def trends():
     # http://docs.peewee-orm.com/en/latest/peewee/playhouse.html#object_list
     return render_template('trends.html', karachi=karachi, lahore=lahore, pakistan=pakistan, india=india, unitedstates=unitedstates, world=world)
 
+
 @application.route('/done/')
 @login_required
 def done():
@@ -287,6 +296,7 @@ def done():
         query,
         search=search_query,
         check_bounds=False)
+
 
 @application.route('/create/', methods=['GET', 'POST'])
 @login_required
@@ -310,12 +320,14 @@ def create():
             flash('Title and Link are required.', 'danger')
     return render_template('create.html')
 
+
 @application.route('/drafts/')
 @login_required
 def drafts():
     query = Entry.drafts().order_by(Entry.timestamp.desc())
 
     return object_list('todo.html', query, check_bounds=False)
+
 
 @application.route('/<id>/')
 @login_required
@@ -326,9 +338,9 @@ def detail(id):
         query = Entry.public()
     entry = get_object_or_404(query, Entry.id == id)
 
-    #fblink = urllib.quote_plus(entry.publink)
+    # fblink = urllib.quote_plus(entry.publink)
     fburl = ('https://api.facebook.com/method/links.getStats?urls=%s&format=json' % entry.publink)
-    fbresponse = urllib.urlopen(fburl);
+    fbresponse = urllib.urlopen(fburl)
     fbshares = json.load(fbresponse)
 
     # Deprecated
@@ -338,6 +350,7 @@ def detail(id):
     twshares = 0
 
     return render_template('detail.html', entry=entry, fbshares=fbshares, twshares=twshares)
+
 
 @application.route('/<id>/edit/', methods=['GET', 'POST'])
 @login_required
@@ -357,14 +370,15 @@ def edit(id):
             flash('Entry saved successfully.', 'success')
             if entry.published:
                 return redirect(url_for('detail', id=entry.id))
-                #return redirect(url_for('drafts'))
+                # return redirect(url_for('drafts'))
             else:
-                #return redirect(url_for('edit', id=entry.id))
+                # return redirect(url_for('edit', id=entry.id))
                 return redirect(url_for('drafts'))
         else:
             flash('Title and Link are required.', 'danger')
 
     return render_template('edit.html', entry=entry)
+
 
 @application.route('/<id>/delete/', methods=['POST'])
 @login_required
@@ -376,24 +390,26 @@ def delete(id):
 
     return redirect(url_for('drafts'))
 
+
 @application.route('/<id>/update/', methods=['GET', 'POST'])
 @login_required
 def update(id):
     entry = get_object_or_404(Entry, Entry.id == id)
     if request.method == 'POST':
-        entry.publink=request.form['publink']
+        entry.publink = request.form['publink']
         entry.published = request.form.get('published') or False
         entry.save()
 
         flash('Entry saved successfully.', 'success')
         if entry.published:
-            #return redirect(url_for('detail', id=entry.id))
+            # return redirect(url_for('detail', id=entry.id))
             return redirect(url_for('drafts'))
         else:
-            #return redirect(url_for('edit', id=entry.id))
+            # return redirect(url_for('edit', id=entry.id))
             return redirect(url_for('drafts'))
 
     return render_template('edit.html', entry=entry)
+
 
 @application.route('/<id>/graphic/')
 @login_required
@@ -407,15 +423,15 @@ def graphic(id):
     bust = random.random()
 
     filename = str(entry.id)
-    savefile = 'static/images/'+filename+'.png'
+    savefile = 'static/images/' + filename + '.png'
 
     if not os.path.isfile(savefile):
         imgfile = requests.get(entry.imgurl)
         with open(savefile, 'wb') as f:
             f.write(imgfile.content)
-    
 
     return render_template('graphic.html', entry=entry, bust=bust, savefile=savefile)
+
 
 @application.route('/<id>/graphic/update')
 @login_required
@@ -427,7 +443,7 @@ def graphic_update(id):
     entry = get_object_or_404(query, Entry.id == id)
 
     filename = str(entry.id)
-    savefile = 'static/images/'+filename+'.png'
+    savefile = 'static/images/' + filename + '.png'
 
     imgfile = requests.get(entry.imgurl)
 
@@ -435,6 +451,36 @@ def graphic_update(id):
         f.write(imgfile.content)
 
     return redirect(url_for('graphic', id=entry.id))
+
+
+@application.route('/feeds/tribune')
+@cache.cached(timeout=180)
+@login_required
+def feeds_tribune():
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    req = urllib2.Request('http://tribune.com.pk/feed/', None, headers)
+    f = urllib2.urlopen(req)
+    return f.read()
+
+
+@application.route('/feeds/dawn')
+@cache.cached(timeout=180)
+@login_required
+def feeds_dawn():
+    f = urllib.urlopen("http://www.dawn.com/feeds/home")
+    return f.read()
+
+
+@application.route('/feeds/')
+@login_required
+def feeds():
+    return render_template('feeds.html')
+
+
+@application.route('/favicon.ico')
+def favicon():
+    return "0"
+
 
 @application.template_filter('clean_querystring')
 def clean_querystring(request_args, *keys_to_remove, **new_values):
@@ -449,14 +495,16 @@ def clean_querystring(request_args, *keys_to_remove, **new_values):
     querystring.update(new_values)
     return urllib.urlencode(querystring)
 
+
 @application.errorhandler(404)
 def not_found(exc):
     return Response('<h3>Not found</h3>'), 404
 
-#def main():
-#   database.create_tables([Entry, FTSEntry], safe=True)
-#   application.run(debug=True,host='0.0.0.0')
+# def main():
+#    database.create_tables([Entry, FTSEntry], safe=True)
+#    application.run(debug=True,host='0.0.0.0')
+
 
 if __name__ == '__main__':
     database.create_tables([Entry, FTSEntry], safe=True)
-    application.run(debug=True,host='0.0.0.0')
+    application.run(debug=True, host='0.0.0.0')

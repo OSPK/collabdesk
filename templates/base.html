@@ -35,6 +35,7 @@
 							<li><a href="{{ url_for('create') }}">New</a></li>
 							<li><a href="{{ url_for('drafts') }}">To do <span class="label label-danger">{{ draft_count() }}</span></a></li>
 							<li><a href="{{ url_for('done') }}">Done <span class="label label-success">{{ done_count() }}</span></a></li>
+							<li><a href="{{ url_for('feeds') }}">Feeds</a></li>
 							<li><a href="{{ url_for('logout') }}">Log out</a></li>
 						{% else %}
 							<li><a href="{{ url_for('login') }}">Login</a></li>

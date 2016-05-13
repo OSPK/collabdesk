@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Title Page</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="text-center">	
+				<button class="btn btn-default" onclick="window.history.back()">Go Back</button>
+				<a href="/" class="btn btn-default">Home</a>
+			</div>
+			<h1 class="text-center">Feeds</h1>
+			<div class="col-md-6">
+				<h1 class="text-center">Dawn</h1>
+				<div class="dawn"></div>
+			</div>
+			<div class="col-md-6">
+				<h1 class="text-center">Tribune</h1>
+				<div class="tribune"></div>
+			</div>
+		</div>
+
+		<!-- jQuery -->
+		<script src="/static/js/jquery2.js"></script>
+
+		<script src="/static/js/jquery.jfeed.js"></script>
+ 		<script type="text/javascript">
+	 		jQuery.getFeed({
+			   url: '/feeds/dawn',
+			   success: function(feed) {
+			   	var items = feed.items;
+			   	$.each(items, function(index, value) {
+			   		var listeitem = "<br><h4><a href='" + value.link + "'>" + value.title + "</a></h4>"
+			   		$( ".dawn" ).append(listeitem);
+			   	});
+			   }
+			});
+
+			jQuery.getFeed({
+			   url: '/feeds/tribune',
+			   success: function(feed) {
+			   	var items = feed.items;
+			   	$.each(items, function(index, value) {
+			   		var listeitem = "<br><h4><a href='" + value.link + "'>" + value.title + "</a></h4>"
+			   		$( ".tribune" ).append(listeitem);
+			   	});
+			   }
+			});
+ 		</script>
+</html>
