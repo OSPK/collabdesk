@@ -182,7 +182,7 @@ def draft_count():
     query = 0
 
     if Entry.drafts() is not None:
-        query = Entry.drafts().order_by(Entry.timestamp.desc())
+        query = Entry.drafts()
     a = 0
     for x in query:
         a += 1
@@ -193,7 +193,7 @@ def done_count():
     query = 0
 
     if Entry.public() is not None:
-        query = Entry.public().order_by(Entry.timestamp.desc())
+        query = Entry.public()
     b = 0
     for x in query:
         b += 1
