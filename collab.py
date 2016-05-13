@@ -131,11 +131,11 @@ class Entry(flask_db.Model):
 
     @classmethod
     def public(cls):
-        return Entry.select().where(Entry.published is True)
+        return Entry.select().where(Entry.published == True)
 
     @classmethod
     def drafts(cls):
-        return Entry.select().where(Entry.published is False)
+        return Entry.select().where(Entry.published == False)
 
     @classmethod
     def search(cls, query):
@@ -182,7 +182,7 @@ def draft_count():
     query = 0
 
     if Entry.drafts() is not None:
-        query = Entry.drafts()
+        query = Entry.drafts().order_by(Entry.timestamp.desc())
     a = 0
     for x in query:
         a += 1
@@ -193,7 +193,7 @@ def done_count():
     query = 0
 
     if Entry.public() is not None:
-        query = Entry.public()
+        query = Entry.public().order_by(Entry.timestamp.desc())
     b = 0
     for x in query:
         b += 1
@@ -285,7 +285,7 @@ def done():
     if search_query:
         query = Entry.search(search_query)
     else:
-        query = Entry.public().order_by(Entry.timestamp.desc())
+        query = Entry.select().where(Entry.published == True).order_by(Entry.timestamp.desc())
 
     # The `object_list` helper will take a base query and then handle
     # paginating the results if there are more than 20. For more info see
@@ -324,7 +324,7 @@ def create():
 @application.route('/drafts/')
 @login_required
 def drafts():
-    query = Entry.drafts().order_by(Entry.timestamp.desc())
+    query = Entry.select().where(Entry.published == False).order_by(Entry.timestamp.desc())
 
     return object_list('todo.html', query, check_bounds=False)
 
