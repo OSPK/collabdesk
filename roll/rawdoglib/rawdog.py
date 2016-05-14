@@ -1482,7 +1482,7 @@ class Rawdog(Persistable):
 				template += """__refresh__
 """
 			template += """    <link rel="stylesheet" href="/static/rawdog_style.css" type="text/css">
-    <title>rawdog</title>
+    <title>feed</title>
 </head>
 <body id="rawdog">
 <div id="header">
