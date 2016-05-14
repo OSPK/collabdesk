@@ -1486,7 +1486,7 @@ class Rawdog(Persistable):
 </head>
 <body id="rawdog">
 <div id="header">
-<h1><a href=''>home</a> / feed</h1>
+<h1><a href='/'>home</a> / feed</h1>
 </div>
 <div id="items">
 __items__
