@@ -1481,12 +1481,12 @@ class Rawdog(Persistable):
 			if config["userefresh"]:
 				template += """__refresh__
 """
-			template += """    <link rel="stylesheet" href="style.css" type="text/css">
+			template += """    <link rel="stylesheet" href="/static/rawdog_style.css" type="text/css">
     <title>rawdog</title>
 </head>
 <body id="rawdog">
 <div id="header">
-<h1>rawdog</h1>
+<h1><a href=''>home</a> / feed</h1>
 </div>
 <div id="items">
 __items__

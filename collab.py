@@ -490,11 +490,6 @@ def favicon():
     return "0"
 
 
-@application.route('/feeds/style.css')
-def rawdog_styles():
-    return ".day,.item,.time{clear:both}.xmlbutton{border:1px solid;border-color:#FC9 #630 #330 #F96;padding:0 3px;font:700 10px sans-serif;color:#FFF;background:#F60;text-decoration:none;margin:0}#feeds,#footer,#header,.item{border:1px solid gray}#header,body{padding:10px}h2,h3{text-align:left;margin:10px 0;padding:0;font-weight:700}img{max-width:100%;height:auto}html{margin:0;padding:0}body{color:#000;background-color:#fff;margin:0;font-size:medium}#header{background-color:#ffe;margin-bottom:20px}h1{font-weight:700;font-size:xx-large;text-align:left;margin:0;padding:0}h2{font-size:x-large}h3{font-size:large}.item{margin:20px 30px}.itemheader{padding:6px;margin:0;background-color:#eee}.itemtitle{font-weight:700}.itemfrom{font-style:italic}.itemdescription{border-top:1px solid gray;margin:0;padding:6px}#feeds{margin:10px 0;border-spacing:0}#feedsheader TH{background-color:#eee;border-bottom:1px solid gray;padding:5px;margin:0}.feedsrow TD{padding:5px 10px;margin:0}#footer{background-color:#ffe;margin-top:20px;padding:10px}"
-
-
 @application.template_filter('clean_querystring')
 def clean_querystring(request_args, *keys_to_remove, **new_values):
     # We'll use this template filter in the pagination include. This filter
