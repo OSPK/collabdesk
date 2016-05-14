@@ -471,6 +471,14 @@ def feeds_dawn():
     return f.read()
 
 
+@application.route('/feeds/all')
+@cache.cached(timeout=180)
+@login_required
+def feeds_all():
+    f = urllib.urlopen("http://www.rssmix.com/u/8191641/rss.xml")
+    return f.read()
+
+
 @application.route('/feeds/')
 @login_required
 def feeds():

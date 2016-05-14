@@ -1,0 +1,47 @@
+http://tribune.com.pk/feed/
+http://tribune.com.pk/pakistan/feed/
+http://tribune.com.pk/business/feed/
+http://tribune.com.pk/world/feed/
+http://tribune.com.pk/sports/feed/
+http://tribune.com.pk/technology/feed/
+http://tribune.com.pk/life-style/feed/
+http://tribune.com.pk/opinion/feed/
+http://tribune.com.pk/magazine/feed/
+http://blogs.tribune.com.pk/feed/
+http://tribune.com.pk/multimedia/slideshows/feed/
+http://tribune.com.pk/multimedia/videos/feed/
+http://nation.com.pk/feeds
+http://www.dawn.com/feeds/home
+http://www.dawn.com/feeds/opinion
+http://www.dawn.com/feeds/world
+http://www.dawn.com/feeds/sport
+http://www.dawn.com/feeds/business
+http://www.dawn.com/feeds/magazine
+http://www.dawn.com/feeds/culture
+http://www.dawn.com/feeds/blogs
+http://www.dawn.com/feeds/multimedia
+http://www.dawn.com/feeds/newspaper
+http://www.pakistantoday.com.pk/feed/
+http://www.thenews.com.pk/rss/1/1
+http://www.thenews.com.pk/rss/2/24
+http://www.thenews.com.pk/rss/2/14
+http://www.thenews.com.pk/rss/2/16
+http://www.thenews.com.pk/rss/2/17
+http://www.thenews.com.pk/rss/2/18
+http://www.thenews.com.pk/rss/2/19
+http://www.thenews.com.pk/rss/2/20
+http://www.thenews.com.pk/rss/2/21
+http://www.thenews.com.pk/rss/2/22
+http://www.samaa.tv/feed/
+http://arynews.tv/en/feed/
+http://www.express.pk/feed/
+http://www.webchutney.pk/feed/
+http://www.parhlo.com/feed/
+
+Your new RSS mix is here:
+http://www.rssmix.com/u/8191641/rss.xml (opens in a new window)
+
+A JSON version of your new RSS mix is here:
+http://www.rssmix.com/u/8191641/rss.json (opens in a new window)
+
+You can use the feeds in this mix as the basis for a new mix - create a new mix from this mix.
