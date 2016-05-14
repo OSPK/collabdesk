@@ -16,6 +16,7 @@
 img {
 	max-width: 100%;
 	height: auto;
+	display:block;
 }
 html {
 	margin: 0;
@@ -83,6 +84,7 @@ h3 {
 	border-top: 1px solid gray;
 	margin: 0;
 	padding: 6px;
+	font-size:11px;
 }
 #feedstatsheader {
 }
