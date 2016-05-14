@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: rawdog
+Version: 2.21
+Summary: RSS Aggregator Without Delusions Of Grandeur
+Home-page: http://offog.org/code/rawdog/
+Author: Adam Sampson
+Author-email: ats@offog.org
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 2
+Classifier: Topic :: Internet :: WWW/HTTP

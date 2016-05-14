@@ -54,7 +54,7 @@
 			   	var items = feed.items;
 			   	$( ".loading" ).remove();
 			   	$.each(items, function(index, value) {
-			   		var listeitem = "<br><span class='h4'>"+ index +". <a target='_blank' href='" + value.id + "'>" + value.title + "</a></span><small class='text-muted'> "+value.updated+" | <strong>"+extractDomain(value.id)+"</strong></small><br>";
+			   		var listeitem = "<br><span class='h4'>"+ index +". <a target='_blank' href='" + value.id + "'>" + value.title + "</a></span><small class='text-muted'> "+value.updated+" | <strong>"+extractDomain(value.id)+"</strong></small><br><small>"+value.description+"<small><br><hr><br>";
 			   		$( ".feeds" ).append(listeitem);
 
 			   	});
