@@ -23,6 +23,7 @@
 				<a href="/" class="btn btn-default">Home</a>
 			</div>
 			<h1 class="text-center">Feeds</h1>
+			<div class="loading text-center"><img src="/static/spinner.gif"></div>
 			<div class="col-md-12 feeds"></div>
 		</div>
 
@@ -51,10 +52,11 @@
 			   url: '/feeds/all',
 			   success: function(feed) {
 			   	var items = feed.items;
-			   	console.log(items);
+			   	$( ".loading" ).remove();
 			   	$.each(items, function(index, value) {
 			   		var listeitem = "<br><span class='h4'>"+ index +". <a target='_blank' href='" + value.id + "'>" + value.title + "</a></span><small class='text-muted'> "+value.updated+" | <strong>"+extractDomain(value.id)+"</strong></small><br>";
 			   		$( ".feeds" ).append(listeitem);
+
 			   	});
 			   }
 			});
