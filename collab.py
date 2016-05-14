@@ -482,7 +482,7 @@ def feeds_all():
 @application.route('/feeds/')
 @login_required
 def feeds():
-    return render_template('feeds.html')
+    return render_template('rawdog.html')
 
 
 @application.route('/favicon.ico')
