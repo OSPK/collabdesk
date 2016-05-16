@@ -321,6 +321,6 @@ feed 1m http://www.siasat.pk/forum/external.php?type=RSS2&forumids=22
 feed 1m http://www.siasat.pk/forum/external.php?type=RSS2&forumids=21
 feed 1m http://www.siasat.pk/forum/external.php?type=RSS2&forumids=45
 feed 1m http://dailypakistan.com.pk/feeds
-feed 1m http://www.fark.com/fark.rss
-feed 1m https://www.reddit.com/r/AlternativeHealth+AnythingGoesNews+AskHistorians+askscience+betternews+DarwinAwards+FaithInHumanity+Health+HealthyFood+inthenews+news+NewsOfTheStupid+NewsOfTheWeird+theworldnews+todayilearned+UpliftingNews+usanews+worldnews/new/.rss?sort=new
-feed 1m https://www.reddit.com/r/AlternativeHealth+AnythingGoesNews+AskHistorians+askscience+betternews+DarwinAwards+FaithInHumanity+Health+HealthyFood+inthenews+news+NewsOfTheStupid+NewsOfTheWeird+theworldnews+todayilearned+UpliftingNews+usanews+worldnews/hot/.rss?sort=hot
+feed 1m http://www.fark.com/fark.rss id=fark
+feed 1m https://www.reddit.com/r/AlternativeHealth+AnythingGoesNews+AskHistorians+askscience+betternews+DarwinAwards+FaithInHumanity+Health+HealthyFood+inthenews+news+NewsOfTheStupid+NewsOfTheWeird+theworldnews+todayilearned+UpliftingNews+usanews+worldnews/new/.rss?sort=new id=redditnew
+feed 1m https://www.reddit.com/r/AlternativeHealth+AnythingGoesNews+AskHistorians+askscience+betternews+DarwinAwards+FaithInHumanity+Health+HealthyFood+inthenews+news+NewsOfTheStupid+NewsOfTheWeird+theworldnews+todayilearned+UpliftingNews+usanews+worldnews/hot/.rss?sort=hot id=reddithot
