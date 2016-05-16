@@ -321,4 +321,6 @@ feed 1m http://www.siasat.pk/forum/external.php?type=RSS2&forumids=22
 feed 1m http://www.siasat.pk/forum/external.php?type=RSS2&forumids=21
 feed 1m http://www.siasat.pk/forum/external.php?type=RSS2&forumids=45
 feed 1m http://dailypakistan.com.pk/feeds
+feed 1m http://www.fark.com/fark.rss
+feed 1m https://www.reddit.com/r/AlternativeHealth+AnythingGoesNews+AskHistorians+askscience+betternews+DarwinAwards+FaithInHumanity+Health+HealthyFood+inthenews+news+NewsOfTheStupid+NewsOfTheWeird+theworldnews+todayilearned+UpliftingNews+usanews+worldnews.rss
 
