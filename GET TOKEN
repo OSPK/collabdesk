@@ -1,5 +1,5 @@
 GET TOKEN
-https://graph.facebook.com/oauth/access_token?client_id=388666161164782&client_secret=f015f5b3f996f366e767015de3e2ef25&grant_type=client_credentials
+https://graph.facebook.com/oauth/access_token?client_id=
 
 Here's a list of API links to get your stats:
 
